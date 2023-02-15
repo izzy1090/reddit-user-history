@@ -4,9 +4,9 @@ function UserCredentials () {
     // params necessary for the authentication URL below
     const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
     const randomString = 'randomstring';
-    const SCOPE = 'read,livemanage';
+    const SCOPE = 'read';
     const redirectUri = 'http://localhost:3000/';
-    const authorizationUrl = `https://www.reddit.com/api/v1/authorize?client_id=${CLIENT_ID}&response_type=code&state=${randomString}&redirect_uri=${redirectUri}&duration=permanent&scope=${SCOPE}`
+    const authorizationUrl = `https://www.reddit.com/api/v1/authorize?client_id=${CLIENT_ID}&response_type=code&state=${randomString}&redirect_uri=${redirectUri}&duration=temporary&scope=${SCOPE}`
    
     const [ authorizationCode, setAuthorizationCode ] = useState();
 
@@ -27,14 +27,14 @@ function UserCredentials () {
             // we want to set our authorizationCode piece of state to the
             // authorization code we extracted from our URLSearchParams class method
             setAuthorizationCode(code);
-        }
+        } 
     },[])
     
     // button component with an onClick event handler that when the element is clicked
     // the window.location is set to the authorization url which redirects the user
     // to the authorization page recommended by reddit
     const generateTokens = <button onClick={()=>window.location = authorizationUrl}>Generate Token!</button>
-
+    
     return <div>
         {authorizationCode ? authorizationCode : generateTokens}
     </div>
