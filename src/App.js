@@ -1,9 +1,9 @@
-import UserCredentials from "./components/UserCredentials";
+import UserCredentialsPage from "./pages/UserCredentialsPage";
 
 function App () {    
     
     return <div>
-        <UserCredentials/>
+        <UserCredentialsPage/>
     </div>
 }
 
