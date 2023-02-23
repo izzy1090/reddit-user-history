@@ -1,7 +1,8 @@
 import Landing from "../components/Landing";
 import fetchAccessToken from '../api/FetchAccessToken';
-import fetchTokens from '../api/FetchTokens';
+import fetchUserProfile from '../api/FetchUserProfile';
 import { useEffect, useState } from "react";
+import fetchSubreddits from "../api/FetchSubreddits";
 
 function LandingPage({ authToken }){
     const [ refreshToken, setRefreshTokens ] = useState(null);
@@ -11,18 +12,19 @@ function LandingPage({ authToken }){
     const fetchUserInfo = async (token) => {
         try {
             const request = await fetchAccessToken(token);
-            console.log(request)
-            const response = await fetchTokens(request.access_token)
+            const response = await fetchUserProfile(request.access_token)
             setRefreshTokens(request.refresh_token)
-            console.log('Response from api request: ', response);
+            console.log('Authorized User Profile: ', response);
         } catch (error){
             console.log('Error fetching credentials: ', error);
         }
     }
 
-    const fetchRefreshToken = async (token) => {
+    const handleRequest = async (token) => {
         try{
-            console.log('Your refresh token is: ', refreshToken)
+            fetchSubreddits(token).then((response)=>{
+                console.log(response.data.children)
+            })
         } catch (err){
             console.log('Error fetching refresh token: ', err)
         }
@@ -36,7 +38,7 @@ function LandingPage({ authToken }){
         }
     },[authToken])
     
-    return <Landing fetchUserInfo={fetchUserInfo} fetchRefreshToken={fetchRefreshToken}/>
+    return <Landing fetchUserInfo={fetchUserInfo} handleRequest={handleRequest} refreshToken={refreshToken}/>
 }
 
 export default LandingPage;

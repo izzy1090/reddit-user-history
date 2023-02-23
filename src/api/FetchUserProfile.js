@@ -1,4 +1,4 @@
-const fetchTokens = async (authorize_token) => {
+const fetchUserProfile = async (authorize_token) => {
     const request = await fetch(`https://oauth.reddit.com/api/v1/me`, {
         method: 'GET',
         headers: {
@@ -8,10 +8,10 @@ const fetchTokens = async (authorize_token) => {
         },
     })
     if (!request.ok){
-        throw new Error(`Failed to fetch comments: ${request.status} ${request.statusText}`)
+        throw new Error(`Failed to fetch user profile: ${request.status} ${request.statusText}`)
     }
     const response = await request.json();
     return response;
 }
 
-export default fetchTokens;
+export default fetchUserProfile;

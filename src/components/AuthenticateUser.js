@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import useNavigation from "../hooks/use-navigation";
 import Button from "./Button";
 
-function UserCredentials ( { appDescription, authorizationURL, handleAuthorize } ) {  
+function AuthenticateUser ( { appDescription, authorizationURL, handleAuthorize } ) {  
    
     const container = 'flex flex-col items-center justify-center h-screen bg-slate-50'
 
@@ -46,4 +46,4 @@ function UserCredentials ( { appDescription, authorizationURL, handleAuthorize }
     </div>
 }
 
-export default UserCredentials;
+export default AuthenticateUser;

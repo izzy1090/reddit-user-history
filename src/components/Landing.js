@@ -1,9 +1,9 @@
 import Button from "./Button";
 
-function Landing( { fetchRefreshToken } ){
+function Landing( { handleRequest, refreshToken } ){
 
     const handleFetchRefreshToken = () => {
-        fetchRefreshToken()
+        handleRequest(refreshToken)
     }
     return <div className="flex flex-col items-center justify-center">
         <Button rounded active hover onClick={handleFetchRefreshToken}>Fetch Refresh Token</Button>

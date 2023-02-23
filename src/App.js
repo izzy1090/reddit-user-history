@@ -1,5 +1,5 @@
 import Route from "./components/Route";
-import UserCredentialsPage from "./pages/UserCredentialsPage";
+import AuthenticateUserPage from './pages/AuthenticateUserPage';
 import LandingPage from "./pages/LandingPage";
 import { useState } from "react";
 import ButtonPage from "./pages/ButtonPage";
@@ -11,7 +11,7 @@ function App () {
 
     return <div>
         <Route path="/">
-            <UserCredentialsPage handleAuthorize={setAuthToken}/>
+            <AuthenticateUserPage handleAuthorize={setAuthToken}/>
         </Route>
         <Route path='/landingpage'>
             <LandingPage authToken={authToken}/>
