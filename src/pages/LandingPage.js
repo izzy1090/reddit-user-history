@@ -36,7 +36,7 @@ function LandingPage({ authToken }){
         }
     },[authToken])
     
-    return <Landing authToken={authToken} fetchUserInfo={fetchUserInfo} fetchRefreshToken={fetchRefreshToken}/>
+    return <Landing fetchUserInfo={fetchUserInfo} fetchRefreshToken={fetchRefreshToken}/>
 }
 
 export default LandingPage;

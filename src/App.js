@@ -6,6 +6,7 @@ import ButtonPage from "./pages/ButtonPage";
 
 function App () {   
     // authentication token meant to be passed around the various components
+    // to authorize a user's reddit account for use with the app
     const [ authToken, setAuthToken ] = useState(null); 
 
     return <div>
