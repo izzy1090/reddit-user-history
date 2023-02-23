@@ -3,6 +3,7 @@ import fetchAccessToken from '../api/FetchAccessToken';
 import fetchUserProfile from '../api/FetchUserProfile';
 import { useEffect, useState } from "react";
 import fetchSubreddits from "../api/FetchSubreddits";
+import fetchNewToken from "../api/FetchNewToken";
 
 function LandingPage({ authToken }){
     const [ refreshToken, setRefreshTokens ] = useState(null);
@@ -22,9 +23,9 @@ function LandingPage({ authToken }){
 
     const handleRequest = async (token) => {
         try{
-            fetchSubreddits(token).then((response)=>{
-                console.log(response.data.children)
-            })
+            const request = await fetchNewToken(token);
+            const response = await fetchSubreddits(request);
+            console.log(response);
         } catch (err){
             console.log('Error fetching refresh token: ', err)
         }
