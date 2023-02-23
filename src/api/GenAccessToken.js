@@ -11,7 +11,8 @@ const GenAccessToken = async (authorization_code) => {
             'Authorization': 'Basic ' + btoa(`${CLIENT_ID}:${CLIENT_SECRET}`).toString('base64')},
             body: `grant_type=authorization_code&code=${authorization_code}&redirect_uri=${REDIRECT_URI}`
     })
-    const accessToken = await response.json()
+    const accessToken = await response.json();
+    console.log(accessToken)
     return accessToken.access_token;
 }
 

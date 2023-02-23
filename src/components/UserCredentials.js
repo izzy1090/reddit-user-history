@@ -1,7 +1,10 @@
 import { useEffect } from "react";
 import useNavigation from "../hooks/use-navigation";
+import Button from "./Button";
 
-function UserCredentials ( { authorizationURL, handleAuthorize } ) {  
+function UserCredentials ( { appDescription, authorizationURL, handleAuthorize } ) {  
+   
+    const container = 'flex flex-col items-center justify-center h-screen bg-slate-50'
 
     const { navigate } = useNavigation();
 
@@ -24,17 +27,22 @@ function UserCredentials ( { authorizationURL, handleAuthorize } ) {
     // also want to only re-render the page if navigate has been invoked and handleAuthorize has been called
     },[handleAuthorize, navigate])
     
-    const authorizeApplication = <button 
-        className="bg-orange-500 hover:bg-orange-400 active:bg-orange-600 text-white p-1 rounded-md" 
+    const authorizeApplication = <Button 
+        rounded
+        active 
+        hover
         onClick={()=> {
             window.location = authorizationURL;
         }
         }>
         Login To Reddit
-    </button>
+    </Button>
     
-    return <div className='flex justify-center'>
-        {authorizeApplication}
+    return <div className={container}>
+        <div>
+            {appDescription}
+        </div>
+            {authorizeApplication}
     </div>
 }
 
