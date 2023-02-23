@@ -1,9 +1,9 @@
-const AuthorizeCredentials = async (access_token ) => {
-    const request = await fetch(`https://oauth.reddit.com/user/username/overview`, {
+const fetchTokens = async (authorize_token) => {
+    const request = await fetch(`https://oauth.reddit.com/api/v1/me`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
-            'Authorization': `Bearer ${access_token}`,
+            'Authorization': `Bearer ${authorize_token}`,
             'User-Agent': 'fetch-user-history/1.0.0',
         },
     })
@@ -14,4 +14,4 @@ const AuthorizeCredentials = async (access_token ) => {
     return response;
 }
 
-export default AuthorizeCredentials;
+export default fetchTokens;

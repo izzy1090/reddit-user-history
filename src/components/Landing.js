@@ -1,16 +1,12 @@
 import Button from "./Button";
 
-function Landing( { authToken, fetchCredentials } ){
+function Landing( { fetchRefreshToken } ){
 
-    const handleFetchCredentials = () => {
-        fetchCredentials(authToken)
-    }
-    const handleRefreshToken = () => {
-
+    const handleFetchRefreshToken = () => {
+        fetchRefreshToken()
     }
     return <div className="flex flex-col items-center justify-center">
-        <Button rounded active hover onClick={handleFetchCredentials}>Fetch Credentials</Button>
-        <Button rounded active hover onClick={handleRefreshToken}>Fetch Refresh Token</Button>
+        <Button rounded active hover onClick={handleFetchRefreshToken}>Fetch Refresh Token</Button>
     </div>
 }
 
