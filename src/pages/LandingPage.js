@@ -27,9 +27,19 @@ function LandingPage({ authToken, handleRefreshToken }){
             fetchUserInfo(authToken).then((data)=>{
                 setLoading(false);
                 setUserProfile(data)
+                // stores the returned data in a variable called userProfile as a JSON
+                sessionStorage.setItem('userProfile', JSON.stringify(data))
             })
-        } 
-    },[authToken, handleRefreshToken])
+        } else {
+            // else we want to init. userData with the stored session data associated with userProfile
+            // and if the userData has a value we want to set the userProfile state to be the userData
+            const userData = JSON.parse(sessionStorage.getItem('userProfile'))
+            if (userData){
+                setUserProfile(userData)
+            }
+        }
+    },[authToken, handleRefreshToken])    
+
     
     return <Landing userProfile={userProfile} loading={isLoading}/>
 }
