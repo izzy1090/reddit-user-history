@@ -1,10 +1,10 @@
-import Landing from "../components/Landing";
+import RedditUserProfile from "../components/RedditUserProfile";
 import fetchAccessToken from '../api/FetchAccessToken';
 import fetchUserProfile from '../api/FetchUserProfile';
 import { useEffect, useState } from "react";
 
-function LandingPage({ authToken, handleRefreshToken }){
-    const [userProfile, setUserProfile ] = useState({});
+function RedditUserProfilePage({ authToken, handleRefreshToken }){
+    const [ userProfile, setUserProfile ] = useState({});
     const [ isLoading, setLoading ] = useState(false);
 
     // this render the landingPage only after the user has authorized the application
@@ -40,8 +40,7 @@ function LandingPage({ authToken, handleRefreshToken }){
         }
     },[authToken, handleRefreshToken])    
 
-    
-    return <Landing userProfile={userProfile} loading={isLoading}/>
+    return <RedditUserProfile userProfile={userProfile} loading={isLoading}/>
 }
 
-export default LandingPage;
+export default RedditUserProfilePage;

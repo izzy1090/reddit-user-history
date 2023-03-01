@@ -1,6 +1,6 @@
 import Route from "./components/Route";
 import AuthenticateUserPage from './pages/AuthenticateUserPage';
-import LandingPage from "./pages/LandingPage";
+import RedditUserProfilePage from "./pages/RedditUserProfilePage";
 import { useState } from "react";
 import ButtonPage from "./pages/ButtonPage";
 
@@ -16,7 +16,7 @@ function App () {
         </Route>
         <Route path='/landingpage'>
             <div>
-            <LandingPage 
+            <RedditUserProfilePage 
                 authToken={authToken} 
                 refreshToken={refreshToken} 
                 handleRefreshToken={setRefreshTokens}

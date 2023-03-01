@@ -1,4 +1,4 @@
-function Landing( {userProfile, loading} ){
+function RedditUserProfile( {userProfile, loading} ){
     // this checks if there is a userProfile present or if the app is loading
     let noContent;
     if (Object.keys(userProfile).length === 0 && !loading){
@@ -17,24 +17,26 @@ function Landing( {userProfile, loading} ){
     const convertedProfileCreationDate = 
     `${months}/${returnedProfileCreationDate.getDate()}/${returnedProfileCreationDate.getFullYear()}`;
     
-    const content = <>
+    const content = <div className="flex flex-col items-center m-3">
         <img 
             className="w-[80px] h-[80px]" 
             src={userProfile.snoovatar_img} 
-            alt="The reddit user's avatar."/>
-        <div>Username: {userProfile.name}</div>
-        <div>Profile Created: {convertedProfileCreationDate}</div>
-        <div>Total Karma: {userProfile.total_karma}</div>
-        <div>Awardee Karma: {userProfile.awardee_karma}</div>
-        <div>Comment Karma: {userProfile.comment_karma}</div>
-        <div>Gold Creddits: {userProfile.gold_creddits}</div>
-    </>
+            alt="The Reddit user's avatar."/>
+        <div className="font-bold text-xl mb-1">{userProfile.name}</div>
+        <div className="text-gray-700 text-base">
+            <div>Profile Created: {convertedProfileCreationDate}</div>
+            <div>Total Karma: {userProfile.total_karma}</div>
+            <div>Awardee Karma: {userProfile.awardee_karma}</div>
+            <div>Comment Karma: {userProfile.comment_karma}</div>
+            <div>Gold Creddits: {userProfile.gold_creddits}</div>
+        </div>
+    </div>
 
     const handleLoading = !loading ? content : 'Loading...'
     
-    return <div className="flex flex-col items-center justify-center">
+    return <div className="max-w-sm rounded overflow-hidden shadow-lg">
         { noContent || handleLoading }
     </div>
 }
 
-export default Landing;
+export default RedditUserProfile;
