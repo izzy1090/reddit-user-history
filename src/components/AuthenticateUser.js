@@ -22,7 +22,7 @@ function AuthenticateUser ( { appDescription, authorizationURL, handleAuthorize 
         // good to check if the returned token is undefined before setting the state to the returnedToken
         if (returnedToken){
             handleAuthorize(returnedToken);
-            navigate('/landingpage')
+            navigate('/userprofile');
         } 
     // also want to only re-render the page if navigate has been invoked and handleAuthorize has been called
     },[handleAuthorize, navigate])
