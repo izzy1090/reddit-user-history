@@ -3,10 +3,8 @@ import RedditUserProfile from "../components/RedditUserProfile";
 import fetchAccessToken from '../api/FetchAccessToken';
 import fetchUserProfile from '../api/FetchUserProfile';
 import { useEffect, useState } from "react";
-import FetchSubredditsList from "../components/FetchSubredditsList";
 
-
-function RedditUserProfilePage({ refreshToken, authToken, handleRefreshToken }){
+function RedditUserProfilePage({ authToken, handleRefreshToken }){
     const [ userProfile, setUserProfile ] = useState({});
     const [ isLoading, setLoading ] = useState(false);
 
@@ -50,10 +48,7 @@ function RedditUserProfilePage({ refreshToken, authToken, handleRefreshToken }){
         }
     },[authToken, handleRefreshToken])
 
-    return <div>
-        <RedditUserProfile userProfile={userProfile} loading={isLoading}/>
-        <FetchSubredditsList refreshToken={refreshToken}/>
-    </div>
+    return <RedditUserProfile userProfile={userProfile} loading={isLoading}/>
 }
 
 export default RedditUserProfilePage;
