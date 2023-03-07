@@ -14,11 +14,11 @@ function App () {
     const [ refreshToken, setRefreshTokens ] = useState(null);
     console.log('refresh token: ', refreshToken)
 
-    const navbarContainer = 'm-3'
+    const pageContainer = 'flex flex-col m-4'
 
-    return <div>
+    return <div className="p-5">
         <Route path="/">
-            <AuthenticateUserPage handleAuthorize={setAuthToken}/>
+            <AuthenticateUserPage handleAuthToken={setAuthToken}/>
         </Route>
         <Route path='/userprofile'>
             <RedditUserProfilePage 
@@ -26,10 +26,12 @@ function App () {
                 refreshToken={refreshToken} 
                 handleRefreshToken={setRefreshTokens}
                 handleAuthToken={setAuthToken}
-                />
-            <div className={navbarContainer}>
+                /> 
+            <div className={pageContainer}>
                 <Navbar/>
-                <SubscribedRedditsPage/>
+                <div className="mt-5">
+                    <SubscribedRedditsPage/>
+                </div>
             </div>
         </Route>
         <Route path='/userprofile/posts'>
@@ -38,9 +40,11 @@ function App () {
                 refreshToken={refreshToken} 
                 handleRefreshToken={setRefreshTokens}
             />
-            <div className={navbarContainer}>
+            <div className={pageContainer}>
                 <Navbar/>
-                <PostsPage/>
+                <div className="mt-5">
+                    <PostsPage/>
+                </div>
             </div>
         </Route>
         <Route path='/userprofile/comments'>
@@ -49,9 +53,11 @@ function App () {
                 refreshToken={refreshToken} 
                 handleRefreshToken={setRefreshTokens}
             />
-            <div className={navbarContainer}>
+            <div className={pageContainer}>
                 <Navbar/>
-                <CommentsPage/>
+                <div className="mt-5">
+                    <CommentsPage/>
+                </div>
             </div>
         </Route>
     </div>

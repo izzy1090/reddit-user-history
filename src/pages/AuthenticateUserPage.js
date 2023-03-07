@@ -1,6 +1,6 @@
 import AuthenticateUser from '../components/AuthenticateUser';
 
-function AuthenticateUserPage ({handleAuthorize, authToken}) {  
+function AuthenticateUserPage ({handleAuthToken, authToken}) {  
     // params necessary for the authentication URL below
     const REDDIT_SCOPE = ['privatemessages','identity', 'edit', 'flair', 'history', 'read', 'vote', 'wikiread', 'wikiedit', 'mysubreddits'];
 
@@ -12,7 +12,7 @@ function AuthenticateUserPage ({handleAuthorize, authToken}) {
     return <AuthenticateUser 
         appDescription={appDescription} 
         authorizationURL={authorizationURL} 
-        handleAuthorize={handleAuthorize} 
+        handleAuthToken={handleAuthToken} 
         authToken={authToken}/>
 }
 

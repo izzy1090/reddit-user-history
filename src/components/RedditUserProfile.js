@@ -1,5 +1,4 @@
-function RedditUserProfile( {userProfile, loading} ){
-
+function RedditUserProfile( {userProfile, loading} ) {
     const returnedProfileCreationDate = new Date(userProfile.created * 1000);
     function monthConverter(month){
         if (month >= 0 && month <= 9){
@@ -9,6 +8,7 @@ function RedditUserProfile( {userProfile, loading} ){
             return addZero;
         } else return month;
     }
+    
     const months = monthConverter(returnedProfileCreationDate.getMonth());
     const convertedProfileCreationDate = 
     `${months}/${returnedProfileCreationDate.getDate()}/${returnedProfileCreationDate.getFullYear()}`;
@@ -27,8 +27,11 @@ function RedditUserProfile( {userProfile, loading} ){
             <div>Gold Creddits: {userProfile.gold_creddits}</div>
         </div>
     </div>
-
-    const content = !loading ? profileCard : 'Loading...'
+    
+    const noContent = profileCard.props.children.filter((prop)=>{
+        return prop.props.src !== undefined
+    })
+    const content = !loading && userProfile && noContent.length !== 0 ? profileCard : 'Loading...'
     
     return <div className="max-w-sm rounded overflow-hidden shadow-lg">
         { content }

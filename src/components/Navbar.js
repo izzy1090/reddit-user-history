@@ -11,10 +11,10 @@ function Navbar(){
         return <Link 
             key={component.label}
             to={component.path}
-            className={'ml-3'}
+            className='mr-5'
             activeClassName='font-bold border-b-4 border-black'
             >
-                {component.label}
+                {component.label}    
         </Link>;
     });
     return <div className="overflow-y-scroll flex flex-row items-start">

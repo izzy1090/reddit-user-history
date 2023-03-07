@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import useNavigation from "../hooks/use-navigation";
 import Button from "./Button";
 
-function AuthenticateUser ( { appDescription, authorizationURL, handleAuthorize } ) {  
+function AuthenticateUser ( { appDescription, authorizationURL, handleAuthToken } ) {  
    
     const container = 'flex flex-col items-center justify-center h-screen bg-slate-50'
 
@@ -21,11 +21,11 @@ function AuthenticateUser ( { appDescription, authorizationURL, handleAuthorize 
         const returnedToken = parseAuthorization();
         // good to check if the returned token is undefined before setting the state to the returnedToken
         if (returnedToken){
-            handleAuthorize(returnedToken);
+            handleAuthToken(returnedToken);
             navigate('/userprofile');
         } 
     // also want to only re-render the page if navigate has been invoked and handleAuthorize has been called
-    },[handleAuthorize, navigate])
+    },[handleAuthToken, navigate])
     
     const authorizeApplication = <Button 
         rounded
