@@ -1,8 +1,8 @@
 import Link from "./Link";
 
-function Sidebar(){
+function Navbar(){
     const links = [
-        {label: 'Subscribed Subreddits', path: '/userprofile/subs'},
+        {label: 'Subscribed Subreddits', path: '/userprofile'},
         {label: 'Posts', path: '/userprofile/posts'},
         {label: 'Comments', path: '/userprofile/comments'}
     ]
@@ -22,4 +22,4 @@ function Sidebar(){
     </div>
 };
 
-export default Sidebar;
+export default Navbar;

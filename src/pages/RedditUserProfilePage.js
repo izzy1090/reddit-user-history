@@ -4,7 +4,7 @@ import fetchAccessToken from '../api/FetchAccessToken';
 import fetchUserProfile from '../api/FetchUserProfile';
 import { useEffect, useState } from "react";
 
-function RedditUserProfilePage({ authToken, handleRefreshToken }){
+function RedditUserProfilePage({ handleAuthToken, authToken, handleRefreshToken }){
     const [ userProfile, setUserProfile ] = useState({});
     const [ isLoading, setLoading ] = useState(false);
 
@@ -17,10 +17,12 @@ function RedditUserProfilePage({ authToken, handleRefreshToken }){
             try {
                 setLoading(true);
                 const request = await fetchAccessToken(token);
+                const response = await fetchUserProfile(request.access_token);
                 // sets the refresh token in case we need it for immediate use after loading the profile
                 handleRefreshToken(request.refresh_token);
-                const response = await fetchUserProfile(request.access_token);
-                // also securely stores the refresh token in a cookie and protects against cross site attacks
+                // Because we don't need the authToken we can set it to null to prevent future unnecessary api calls
+                handleAuthToken(null);
+                // Securely stores the refresh token in a cookie
                 Cookies.set('refreshToken', request.refresh_token, { expires: 1/24, secure: true, sameSite: true });
                 return response;
             } catch (error){
@@ -33,20 +35,20 @@ function RedditUserProfilePage({ authToken, handleRefreshToken }){
                 setUserProfile(returnedUserInfo);
                 // stores the returned data in a variable called userProfile as a JSON
                 sessionStorage.setItem('userProfile', JSON.stringify(returnedUserInfo));
-                
             })
-        } else {
+        } 
+        else {
             // we then store our userData is sessionStorage as it doesn't contain any confidential information
-            const userData = JSON.parse(sessionStorage.getItem('userProfile'))
+            const refreshedUserData = JSON.parse(sessionStorage.getItem('userProfile'));
             // also grabs the refresh token from our cookie
             const cachedToken = Cookies.get('refreshToken');
-            if (userData && cachedToken){  
+            if (refreshedUserData && cachedToken){  
                 // then sets both the userData and refreshTokens to stored values from last page render
-                setUserProfile(userData)
-                handleRefreshToken(cachedToken)
+                setUserProfile(refreshedUserData);
+                handleRefreshToken(cachedToken);
             } 
         }
-    },[authToken, handleRefreshToken])
+    },[authToken, handleRefreshToken, handleAuthToken])
 
     return <RedditUserProfile userProfile={userProfile} loading={isLoading}/>
 }

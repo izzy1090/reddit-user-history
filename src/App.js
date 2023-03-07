@@ -12,11 +12,11 @@ function App () {
     // to authorize a user's reddit account for use with the app
     const [ authToken, setAuthToken ] = useState(null); 
     const [ refreshToken, setRefreshTokens ] = useState(null);
-    console.log(refreshToken)
+    console.log('refresh token: ', refreshToken)
 
-    const NavbarContainer = 'm-3'
+    const navbarContainer = 'm-3'
 
-    return <div className="flex items-center flex-col">
+    return <div>
         <Route path="/">
             <AuthenticateUserPage handleAuthorize={setAuthToken}/>
         </Route>
@@ -25,16 +25,9 @@ function App () {
                 authToken={authToken} 
                 refreshToken={refreshToken} 
                 handleRefreshToken={setRefreshTokens}
+                handleAuthToken={setAuthToken}
                 />
-            <Navbar/>
-        </Route>
-        <Route path='/userprofile/subs'>
-            <RedditUserProfilePage 
-                authToken={authToken} 
-                refreshToken={refreshToken} 
-                handleRefreshToken={setRefreshTokens}
-            />
-            <div className={NavbarContainer}>
+            <div className={navbarContainer}>
                 <Navbar/>
                 <SubscribedRedditsPage/>
             </div>
@@ -45,7 +38,7 @@ function App () {
                 refreshToken={refreshToken} 
                 handleRefreshToken={setRefreshTokens}
             />
-            <div className={NavbarContainer}>
+            <div className={navbarContainer}>
                 <Navbar/>
                 <PostsPage/>
             </div>
@@ -56,7 +49,7 @@ function App () {
                 refreshToken={refreshToken} 
                 handleRefreshToken={setRefreshTokens}
             />
-            <div className={NavbarContainer}>
+            <div className={navbarContainer}>
                 <Navbar/>
                 <CommentsPage/>
             </div>

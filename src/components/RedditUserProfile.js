@@ -1,9 +1,5 @@
 function RedditUserProfile( {userProfile, loading} ){
-    // this checks if there is a userProfile present or if the app is loading
-    let noContentError;
-    if (Object.keys(userProfile).length === 0 && !loading){
-        noContentError = <div>Oops, looks like your profile is empty. That's strange!</div>
-    }
+
     const returnedProfileCreationDate = new Date(userProfile.created * 1000);
     function monthConverter(month){
         if (month >= 0 && month <= 9){
@@ -17,7 +13,7 @@ function RedditUserProfile( {userProfile, loading} ){
     const convertedProfileCreationDate = 
     `${months}/${returnedProfileCreationDate.getDate()}/${returnedProfileCreationDate.getFullYear()}`;
     
-    const content = <div className="flex flex-col items-center m-3">
+    const profileCard = <div className="flex flex-col items-center m-3">
         <img 
             className="w-[80px] h-[80px]" 
             src={userProfile.snoovatar_img} 
@@ -32,10 +28,10 @@ function RedditUserProfile( {userProfile, loading} ){
         </div>
     </div>
 
-    const handleLoading = !loading ? content : 'Loading...'
+    const content = !loading ? profileCard : 'Loading...'
     
     return <div className="max-w-sm rounded overflow-hidden shadow-lg">
-        { noContentError || handleLoading }
+        { content }
     </div>
 }
 
