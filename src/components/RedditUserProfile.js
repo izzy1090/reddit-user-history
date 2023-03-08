@@ -1,4 +1,5 @@
 function RedditUserProfile( {userProfile, loading} ) {
+    
     const returnedProfileCreationDate = new Date(userProfile.created * 1000);
     function monthConverter(month){
         if (month >= 0 && month <= 9){
@@ -31,7 +32,7 @@ function RedditUserProfile( {userProfile, loading} ) {
     const noContent = profileCard.props.children.filter((prop)=>{
         return prop.props.src !== undefined
     });
-    const handleLoading = <div class="w-12 h-12 rounded-full animate-spin 
+    const handleLoading = <div className="w-12 h-12 rounded-full animate-spin 
         border-y border-solid border-reddit-orange 
         border-t-transparent"/>
     const content = !loading && userProfile && noContent.length !== 0 ? profileCard : handleLoading;

@@ -12,10 +12,9 @@ function App () {
     // to authorize a user's reddit account for use with the app
     const [ authToken, setAuthToken ] = useState(null); 
     const [ refreshToken, setRefreshTokens ] = useState(null);
-    console.log('refresh token: ', refreshToken)
 
     const pageContainer = 'flex flex-col m-4'
-
+    console.log('App level refresh token: ', refreshToken);
     return (
     <div>
         <Route path="/">
@@ -32,7 +31,9 @@ function App () {
                 <div className={pageContainer}>
                     <Navbar/>
                     <div className="mt-5">
-                        <SubscribedRedditsPage/>
+                        <SubscribedRedditsPage
+                            refreshToken={refreshToken} 
+                            handleRefreshToken={setRefreshTokens}/>
                     </div>
                 </div>
             </Route>

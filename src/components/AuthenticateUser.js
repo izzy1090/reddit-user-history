@@ -4,9 +4,8 @@ import Button from "./Button";
 
 function AuthenticateUser ( { appDescription, authorizationURL, handleAuthToken } ) {  
    
-    const container = 'flex flex-col items-center justify-center h-screen bg-slate-50'
-
     const { navigate } = useNavigation();
+    const container = 'flex flex-col items-center justify-center h-screen bg-slate-50'
 
     function parseAuthorization(){
         // extract the window path of the browser as a query sting
