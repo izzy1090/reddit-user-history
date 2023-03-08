@@ -16,51 +16,55 @@ function App () {
 
     const pageContainer = 'flex flex-col m-4'
 
-    return <div className="p-5">
+    return (
+    <div>
         <Route path="/">
             <AuthenticateUserPage handleAuthToken={setAuthToken}/>
         </Route>
-        <Route path='/userprofile'>
-            <RedditUserProfilePage 
-                authToken={authToken} 
-                refreshToken={refreshToken} 
-                handleRefreshToken={setRefreshTokens}
-                handleAuthToken={setAuthToken}
-                /> 
-            <div className={pageContainer}>
-                <Navbar/>
-                <div className="mt-5">
-                    <SubscribedRedditsPage/>
+            <div className="p-5">
+            <Route path='/userprofile'>
+                <RedditUserProfilePage 
+                    authToken={authToken} 
+                    refreshToken={refreshToken} 
+                    handleRefreshToken={setRefreshTokens}
+                    handleAuthToken={setAuthToken}
+                    /> 
+                <div className={pageContainer}>
+                    <Navbar/>
+                    <div className="mt-5">
+                        <SubscribedRedditsPage/>
+                    </div>
                 </div>
-            </div>
-        </Route>
-        <Route path='/userprofile/posts'>
-            <RedditUserProfilePage 
-                authToken={authToken} 
-                refreshToken={refreshToken} 
-                handleRefreshToken={setRefreshTokens}
-            />
-            <div className={pageContainer}>
-                <Navbar/>
-                <div className="mt-5">
-                    <PostsPage/>
+            </Route>
+            <Route path='/userprofile/posts'>
+                <RedditUserProfilePage 
+                    authToken={authToken} 
+                    refreshToken={refreshToken} 
+                    handleRefreshToken={setRefreshTokens}
+                />
+                <div className={pageContainer}>
+                    <Navbar/>
+                    <div className="mt-5">
+                        <PostsPage/>
+                    </div>
                 </div>
-            </div>
-        </Route>
-        <Route path='/userprofile/comments'>
-            <RedditUserProfilePage 
-                authToken={authToken} 
-                refreshToken={refreshToken} 
-                handleRefreshToken={setRefreshTokens}
-            />
-            <div className={pageContainer}>
-                <Navbar/>
-                <div className="mt-5">
-                    <CommentsPage/>
+            </Route>
+            <Route path='/userprofile/comments'>
+                <RedditUserProfilePage 
+                    authToken={authToken} 
+                    refreshToken={refreshToken} 
+                    handleRefreshToken={setRefreshTokens}
+                />
+                <div className={pageContainer}>
+                    <Navbar/>
+                    <div className="mt-5">
+                        <CommentsPage/>
+                    </div>
                 </div>
-            </div>
-        </Route>
+            </Route>
+        </div>
     </div>
+    )
 }
 
 export default App;

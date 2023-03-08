@@ -4,8 +4,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'custom-color': 'rgb(252, 71, 30)'
-      },
+        'reddit-orange': 'rgb(252, 71, 30)'
+      }
     },
   },
   variants: {},

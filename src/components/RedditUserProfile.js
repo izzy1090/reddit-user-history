@@ -25,17 +25,20 @@ function RedditUserProfile( {userProfile, loading} ) {
             <div>Awardee Karma: {userProfile.awardee_karma}</div>
             <div>Comment Karma: {userProfile.comment_karma}</div>
             <div>Gold Creddits: {userProfile.gold_creddits}</div>
-        </div>
-    </div>
+        </div> 
+    </div>;
     
     const noContent = profileCard.props.children.filter((prop)=>{
         return prop.props.src !== undefined
-    })
-    const content = !loading && userProfile && noContent.length !== 0 ? profileCard : 'Loading...'
+    });
+    const handleLoading = <div class="w-12 h-12 rounded-full animate-spin 
+        border-y border-solid border-reddit-orange 
+        border-t-transparent"/>
+    const content = !loading && userProfile && noContent.length !== 0 ? profileCard : handleLoading;
     
-    return <div className="max-w-sm rounded overflow-hidden shadow-lg">
+    return <div className="flex items-center justify-center max-w-sm rounded overflow-hidden shadow-lg h-64">
         { content }
-    </div>
+    </div>;
 }
 
 export default RedditUserProfile;

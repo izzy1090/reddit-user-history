@@ -44,6 +44,7 @@ function RedditUserProfilePage({ handleAuthToken, authToken, handleRefreshToken 
             const cachedToken = Cookies.get('refreshToken');
             if (refreshedUserData && cachedToken){  
                 // then sets both the userData and refreshTokens to stored values from last page render
+                // setLoading(true)
                 setUserProfile(refreshedUserData);
                 handleRefreshToken(cachedToken);
             } 
