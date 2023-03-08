@@ -3,10 +3,12 @@ import RedditUserProfile from "../components/RedditUserProfile";
 import fetchAccessToken from '../api/FetchAccessToken';
 import fetchUserProfile from '../api/FetchUserProfile';
 import { useEffect, useState } from "react";
+import useUsername from "../hooks/use-username";
 
 function RedditUserProfilePage({ handleAuthToken, authToken, handleRefreshToken }){
     const [ userProfile, setUserProfile ] = useState({});
     const [ isLoading, setLoading ] = useState(false);
+    const { handleUsername } = useUsername();
 
     // this render the landingPage only after the user has authorized the application
     // to have access to their Reddit account
@@ -33,22 +35,26 @@ function RedditUserProfilePage({ handleAuthToken, authToken, handleRefreshToken 
             fetchUserInfo(authToken).then((returnedUserInfo)=>{
                 setLoading(false);
                 setUserProfile(returnedUserInfo);
+                handleUsername(returnedUserInfo.name)
                 // stores the returned data in a variable called userProfile as a JSON
                 sessionStorage.setItem('userProfile', JSON.stringify(returnedUserInfo));
+                sessionStorage.setItem('username', JSON.stringify(returnedUserInfo.name));
             })
         } 
         else {
             // we then store our userData is sessionStorage as it doesn't contain any confidential information
             const refreshedUserData = JSON.parse(sessionStorage.getItem('userProfile'));
+            const storedUsername = JSON.parse(sessionStorage.getItem('username'));
             // also grabs the refresh token from our cookie
             const cachedToken = Cookies.get('refreshToken');
-            if (refreshedUserData && cachedToken){  
+            if (refreshedUserData && cachedToken && storedUsername){  
                 // then sets both the userData and refreshTokens to stored values from last page render
                 setUserProfile(refreshedUserData);
                 handleRefreshToken(cachedToken);
+                handleUsername(storedUsername);
             } 
         }
-    },[authToken, handleRefreshToken, handleAuthToken])
+    },[authToken, handleRefreshToken, handleAuthToken, handleUsername])
 
     return <RedditUserProfile userProfile={userProfile} loading={isLoading}/>
 }

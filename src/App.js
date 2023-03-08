@@ -2,10 +2,10 @@ import Route from "./components/Route";
 import Navbar from "./components/Navbar";
 import AuthenticateUserPage from './pages/AuthenticateUserPage';
 import RedditUserProfilePage from "./pages/RedditUserProfilePage";
-import { useState } from "react";
 import SubscribedRedditsPage from "./pages/SubscribedRedditsPage";
-import CommentsPage from "./pages/CommentsPage";
+import UserCommentsPage from "./pages/UserCommentsPage";
 import PostsPage from "./pages/PostsPage";
+import { useState } from "react";
 
 function App () {   
     // authentication token meant to be passed around the various components
@@ -59,7 +59,7 @@ function App () {
                 <div className={pageContainer}>
                     <Navbar/>
                     <div className="mt-5">
-                        <CommentsPage/>
+                        <UserCommentsPage refreshToken={refreshToken}/>
                     </div>
                 </div>
             </Route>

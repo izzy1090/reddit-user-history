@@ -11,7 +11,6 @@ const fetchUserProfile = async (authorize_token) => {
         throw new Error(`Failed to fetch user profile: ${request.status} ${request.statusText}`)
     }
     const response = await request.json();
-    console.log(response)
     return response;
 }
 
