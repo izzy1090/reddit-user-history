@@ -1,3 +1,5 @@
+import LoadingAnimation from "./LoadingAnimation";
+
 function UserComments ({userComments}) {
     if (userComments.length !== 0){
         const renderedUserComments = userComments.data.children.map((comment, i)=>{
@@ -9,14 +11,7 @@ function UserComments ({userComments}) {
             </div>
         })
         return <div>{renderedUserComments}</div>
-    }
-    
-    
-    
-    
-    // return <div>
-    //     {renderedUserComments}
-    // </div>
+    } else return <LoadingAnimation/>
 };
 
 export default UserComments;

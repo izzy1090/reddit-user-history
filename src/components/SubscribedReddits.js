@@ -1,3 +1,5 @@
+import LoadingAnimation from "./LoadingAnimation";
+
 function SubscribedReddits({ subscribedSubreddits }){
     if (subscribedSubreddits.length !== 0){
         const renderedSubscribedSubreddits = subscribedSubreddits.data.children.map((subreddit, i)=>{
@@ -13,7 +15,7 @@ function SubscribedReddits({ subscribedSubreddits }){
             } else return <div>No content found...</div>;
         })
         return<div>{renderedSubscribedSubreddits}</div>
-    }
+    } else return <LoadingAnimation/>
     
     
 };
