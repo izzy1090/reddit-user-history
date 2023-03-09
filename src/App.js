@@ -16,7 +16,7 @@ function App () {
     const pageContainer = 'flex flex-col m-4'
     console.log('App level refresh token: ', refreshToken);
     return (
-    <div>
+    <div className="bg-slate-50">
         <Route path="/">
             <AuthenticateUserPage handleAuthToken={setAuthToken}/>
         </Route>
@@ -27,14 +27,13 @@ function App () {
                     refreshToken={refreshToken} 
                     handleRefreshToken={setRefreshTokens}
                     handleAuthToken={setAuthToken}
+                    className='flex justify-center items-center'
                     /> 
                 <div className={pageContainer}>
                     <Navbar/>
-                    <div className="mt-5">
-                        <SubredditsPage
-                            refreshToken={refreshToken} 
-                            handleRefreshToken={setRefreshTokens}/>
-                    </div>
+                    <SubredditsPage
+                        refreshToken={refreshToken} 
+                        handleRefreshToken={setRefreshTokens}/>
                 </div>
             </Route>
             <Route path='/userprofile/posts'>
@@ -45,9 +44,7 @@ function App () {
                 />
                 <div className={pageContainer}>
                     <Navbar/>
-                    <div className="mt-5">
-                        <PostsPage refreshToken={refreshToken}/>
-                    </div>
+                    <PostsPage refreshToken={refreshToken}/>
                 </div>
             </Route>
             <Route path='/userprofile/comments'>
@@ -58,9 +55,7 @@ function App () {
                 />
                 <div className={pageContainer}>
                     <Navbar/>
-                    <div className="mt-5">
-                        <CommentsPage refreshToken={refreshToken}/>
-                    </div>
+                    <CommentsPage refreshToken={refreshToken}/>
                 </div>
             </Route>
         </div>

@@ -14,7 +14,7 @@ function MonthConverter( { date } ){
     const months = monthConverter(returnedProfileCreationDate.getMonth());
     const convertedProfileCreationDate = 
     `${months}/${returnedProfileCreationDate.getDate()}/${returnedProfileCreationDate.getFullYear()}`;
-    return <div>{convertedProfileCreationDate}</div>;
+    return <div className="pl-1">{convertedProfileCreationDate}</div>;
 };
 
 export default MonthConverter;

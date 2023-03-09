@@ -12,7 +12,7 @@ function Navbar(){
             key={component.label}
             to={component.path}
             className='mr-5'
-            activeClassName='font-bold border-b-4 border-black'
+            activeClassName='font-bold reddit-text-orange border-b-2 border-reddit-border-orange'
             >
                 {component.label}    
         </Link>;
