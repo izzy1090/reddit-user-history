@@ -8,7 +8,6 @@ const fetchUserComments = async (newToken, username)=> {
         }
     });
     const response = await request.json();
-    console.log(response);
     return response;
 }
 
