@@ -1,5 +1,5 @@
-const fetchUserComments = async (newToken, username)=> {
-    const request = await fetch(`https://oauth.reddit.com/user/${username}/`, {
+const fetchPosts = async (newToken, username) => {
+    const request = await fetch(`https://oauth.reddit.com/user/${username}/submitted`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
@@ -9,6 +9,6 @@ const fetchUserComments = async (newToken, username)=> {
     });
     const response = await request.json();
     return response;
-}
+};
 
-export default fetchUserComments;
+export default fetchPosts;

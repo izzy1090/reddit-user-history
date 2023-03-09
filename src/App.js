@@ -2,8 +2,8 @@ import Route from "./components/Route";
 import Navbar from "./components/Navbar";
 import AuthenticateUserPage from './pages/AuthenticateUserPage';
 import RedditUserProfilePage from "./pages/RedditUserProfilePage";
-import SubscribedRedditsPage from "./pages/SubscribedRedditsPage";
-import UserCommentsPage from "./pages/UserCommentsPage";
+import SubredditsPage from "./pages/SubredditsPage";
+import CommentsPage from "./pages/CommentsPage";
 import PostsPage from "./pages/PostsPage";
 import { useState } from "react";
 
@@ -31,7 +31,7 @@ function App () {
                 <div className={pageContainer}>
                     <Navbar/>
                     <div className="mt-5">
-                        <SubscribedRedditsPage
+                        <SubredditsPage
                             refreshToken={refreshToken} 
                             handleRefreshToken={setRefreshTokens}/>
                     </div>
@@ -46,7 +46,7 @@ function App () {
                 <div className={pageContainer}>
                     <Navbar/>
                     <div className="mt-5">
-                        <PostsPage/>
+                        <PostsPage refreshToken={refreshToken}/>
                     </div>
                 </div>
             </Route>
@@ -59,7 +59,7 @@ function App () {
                 <div className={pageContainer}>
                     <Navbar/>
                     <div className="mt-5">
-                        <UserCommentsPage refreshToken={refreshToken}/>
+                        <CommentsPage refreshToken={refreshToken}/>
                     </div>
                 </div>
             </Route>

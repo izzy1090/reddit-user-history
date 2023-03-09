@@ -1,17 +1,17 @@
 import fetchNewAccessToken from "../api/FetchNewAccessToken";
 import fetchSubreddits from "../api/FetchSubreddits";
-import SubscribedReddits from "../components/SubscribedReddits";
+import Subreddits from "../components/Subreddits";
 import { useEffect, useState } from "react";
 
-function SubscribedRedditsPage({ refreshToken }){
-    const [ subscribedSubreddits, setSubscribedSubreddits ] = useState([]);
+function SubredditsPage({ refreshToken }){
+    const [ subreddits, setSubreddits ] = useState([]);
 
     useEffect(()=>{
         const handleFetchSubreddits = async (token) => {
             try {
                 const request = await fetchNewAccessToken(token);
                 const response = await fetchSubreddits(request.access_token);
-                setSubscribedSubreddits(response)
+                setSubreddits(response)
             } catch (error){
                 console.log('Error fetching your subscribed Subreddits: ', error);
             }
@@ -21,7 +21,7 @@ function SubscribedRedditsPage({ refreshToken }){
         }
     }, [refreshToken])
     
-    return <SubscribedReddits subscribedSubreddits={subscribedSubreddits}/>
+    return <Subreddits subreddits={subreddits}/>
 };
 
-export default SubscribedRedditsPage;
+export default SubredditsPage;

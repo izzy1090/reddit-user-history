@@ -1,8 +1,8 @@
 import LoadingAnimation from "./LoadingAnimation";
 
-function SubscribedReddits({ subscribedSubreddits }){
-    if (subscribedSubreddits.length !== 0){
-        const renderedSubscribedSubreddits = subscribedSubreddits.data.children.map((subreddit, i)=>{
+function Subreddits({ subreddits }){
+    if (subreddits.length !== 0){
+        const renderedSubreddits = subreddits.data.children.map((subreddit, i)=>{
             if (!subreddit.data[undefined]){
                 return <div key={i}>
                     <img src={subreddit.data.icon_img} alt=''/>
@@ -14,10 +14,10 @@ function SubscribedReddits({ subscribedSubreddits }){
                 </div>
             } else return <div>No content found...</div>;
         })
-        return<div>{renderedSubscribedSubreddits}</div>
+        return<div>{renderedSubreddits}</div>
     } else return <LoadingAnimation/>
     
     
 };
 
-export default SubscribedReddits;
+export default Subreddits;

@@ -10,7 +10,7 @@ function RedditUserProfile( {userProfile, loading} ) {
             alt="The Reddit user's avatar."/>
         <div className="font-bold text-xl mb-1">{userProfile.name}</div>
         <div className="text-gray-700 text-base">
-            <div className="flex flex-row">Profile Created:<MonthConverter date={userProfile}/></div>
+            <div className="flex flex-row">Profile Created:<MonthConverter date={userProfile.created}/></div>
             <div>Total Karma: {userProfile.total_karma}</div>
             <div>Awardee Karma: {userProfile.awardee_karma}</div>
             <div>Comment Karma: {userProfile.comment_karma}</div>

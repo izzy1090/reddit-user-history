@@ -1,5 +1,8 @@
-function MonthConverter( {date} ){
-    const returnedProfileCreationDate = new Date(date.created * 1000);
+function MonthConverter( { date } ){
+    if (date === false){
+        return <div>Never edited</div>
+    }
+    const returnedProfileCreationDate = new Date(date * 1000);
     function monthConverter(month){
         if (month >= 0 && month <= 9){
             let incrementMonth = month;
