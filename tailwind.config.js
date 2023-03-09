@@ -9,6 +9,9 @@ module.exports = {
       '3': '3px'
     },
     extend: {
+      fontFamily: {
+        sans: ['IBMPlexSans', 'Arial', 'sans-serif']
+      },
       colors: {
         'reddit-orange': 'rgb(252, 71, 30)',
         'reddit-border-orange': 'rgb(252, 71, 30)',
