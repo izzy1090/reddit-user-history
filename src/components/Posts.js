@@ -33,19 +33,18 @@ function Posts({posts}){
                         </span>
                     </div>
                 </div>
-                {post.data.link_flair_text && <div className='mb-1' style={{
+                <div className='mb-1 text-base font-semibold'>
+                    {post.data.title}
+                </div>
+                    {post.data.link_flair_text && <div className='mb-2' style={{
                         borderRadius: '2rem',
                         paddingLeft: '5px',
                         paddingRight: '5px',
                         display:'inline-block', 
                         backgroundColor: post.data.link_flair_background_color || 'orange',}}>
-                    {post.data.link_flair_text}
-                </div>}
-                <div className='flex flex-col'>
-                    <div className='mb-1 text-base font-semibold'>
-                        {post.data.title}
-                    </div>
-                    <div className='whitespace-pre-wrap'>{post.data.selftext}</div>
+                    {post.data.link_flair_text} </div>}
+                <div className='whitespace-pre-wrap'>
+                    {post.data.selftext}
                 </div>
             </Panel>)
         })
