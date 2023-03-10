@@ -11,7 +11,7 @@ const root = ReactDom.createRoot(el);
 root.render(
     <NavigationProvider>
         <UsernameProvider>
-            <App />
+            <App/>
         </UsernameProvider>
     </NavigationProvider>
 )

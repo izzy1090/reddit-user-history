@@ -2,7 +2,7 @@ import Link from "./Link";
 
 function Navbar(){
     const links = [
-        {label: 'Subscribed Subreddits', path: '/userprofile'},
+        {label: 'Subreddits', path: '/userprofile'},
         {label: 'Posts', path: '/userprofile/posts'},
         {label: 'Comments', path: '/userprofile/comments'}
     ]
@@ -12,7 +12,6 @@ function Navbar(){
             to={component.path}
             className='mr-5'
             activeClassName='font-bold 
-
             text-reddit-text-orange 
             border-b-2 
             border-reddit-border-orange'

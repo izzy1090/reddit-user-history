@@ -6,8 +6,13 @@ import DateConverter from "./DateConverter";
 function Subreddits({ subreddits }){
     if (subreddits.length !== 0){
         const renderedSubreddits = subreddits.data.children.map((subreddit, i)=>{
+            console.log(subreddit.data.subscribers)
+            let renderedSubscriberCount;
             if (!subreddit.data.icon_img){
                 subreddit.data.icon_img = RedditLogo;
+            }
+            if (subreddit.data.subscribers <= 1000){
+                renderedSubscriberCount = <div className="mr-1">Need to figure out a way to say Number.0 k</div>
             }
             if (!subreddit.data[undefined]){
                 return (
@@ -30,7 +35,7 @@ function Subreddits({ subreddits }){
                         </div>
                     </div>
                     <div className='mb-1'>{subreddit.data.public_description}</div>
-                    <div>Subscribers: {subreddit.data.subscribers}</div>
+                    <div className="flex flex-row">{renderedSubscriberCount} subscribers</div>
                 </Panel>
                 )
             } else return <div>No content found...</div>;
