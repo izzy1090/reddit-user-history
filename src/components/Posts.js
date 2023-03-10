@@ -10,7 +10,7 @@ function Posts({posts}){
             console.log(post.data)
             return (
             <Panel key={i} className={'text-sm'}> 
-                <div className="flex flex-row items-center mb-2 text-xs">
+                <div className="flex flex-row items-center mb-1 text-xs">
                     <a target='_blank' 
                         rel="noreferrer" 
                         href={post.data.url} 

@@ -1,11 +1,20 @@
 import { useEffect } from "react";
 import useNavigation from "../hooks/use-navigation";
 import Button from "./Button";
+import classNames from "classnames";
 
-function AuthenticateUser ( { appDescription, authorizationURL, handleAuthToken } ) {  
+function AuthenticateUser ( { className, appDescription, authorizationURL, handleAuthToken } ) {  
    
     const { navigate } = useNavigation();
-    const container = 'flex flex-col items-center justify-center h-screen'
+
+    const container = classNames(
+        'flex',
+        'flex-col',
+        'items-center',
+        'justify-center', 
+        'h-screen',
+        className
+    ) 
 
     function parseAuthorization(){
         // extract the window path of the browser as a query sting

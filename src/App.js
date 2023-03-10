@@ -16,7 +16,7 @@ function App () {
     const pageContainer = 'flex flex-col m-4'
     console.log('App level refresh token: ', refreshToken);
     return (
-    <div className="bg-slate-50">
+    <>
         <Route path="/">
             <AuthenticateUserPage handleAuthToken={setAuthToken}/>
         </Route>
@@ -59,7 +59,7 @@ function App () {
                 </div>
             </Route>
         </div>
-    </div>
+    </>
     )
 }
 
