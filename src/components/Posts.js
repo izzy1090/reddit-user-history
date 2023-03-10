@@ -1,28 +1,55 @@
-import MonthConverter from './MonthConverter';
+import DateConverter from './DateConverter';
 import LoadingAnimation from './LoadingAnimation';
+import Panel from './Panel';
 
 function Posts({posts}){
     if (posts.length !== 0){
+        // console.log(posts)
         const renderedPosts = posts.data.children.map( (post, i) => {
-            return <div key={i}> 
-                <div>{post.data.subreddit}</div>
-                <div>{post.data.title}</div>
-                <div className='flex flex-row'>
-                    Post Date:<MonthConverter date={post.data.created}/>
+            
+            console.log(post.data)
+            return (
+            <Panel key={i} className={'text-sm'}> 
+                <div className="flex flex-row items-center mb-2 text-xs">
+                    <a target='_blank' 
+                        rel="noreferrer" 
+                        href={post.data.url} 
+                        className='hover:underline'>
+                        {post.data.subreddit_name_prefixed}
+                    </a>
+                    <div className='ml-1 flex flex-row font-light text-slate-500'>
+                        · post by <span className='ml-1'>
+                            <a target='_blank' 
+                            rel='noreferrer' 
+                            href={`https://www.reddit.com/user/${post.data.author}/`}
+                            className='hover:underline'>
+                                u/{post.data.author}
+                            </a></span>
+                        <span className='flex flex-row ml-1'>
+                            on <DateConverter date={post.data.created}/>
+                        </span>
+                        <span className='flex flex-row ml-1'> 
+                            · edited <DateConverter date={post.data.edited}/>
+                        </span>
+                    </div>
                 </div>
-                <div className='flex flex-row'>
-                    Last Edited:<MonthConverter date={post.data.edited}/>
+                {post.data.link_flair_text && <div className='mb-1' style={{
+                        borderRadius: '2rem',
+                        paddingLeft: '5px',
+                        paddingRight: '5px',
+                        display:'inline-block', 
+                        backgroundColor: post.data.link_flair_background_color || 'orange',}}>
+                    {post.data.link_flair_text}
+                </div>}
+                <div className='flex flex-col'>
+                    <div className='mb-1 text-base font-semibold'>
+                        {post.data.title}
+                    </div>
+                    <div className='whitespace-pre-wrap'>{post.data.selftext}</div>
                 </div>
-                <div className='whitespace-pre'>{post.data.selftext}</div>
-                <div>{post.data.total_awards_received}</div>
-                <div>{post.data.ups}</div>
-                <div>{post.data.permalink}</div>
-                <div>{post.data.url}</div>
-            </div>
+            </Panel>)
         })
-        console.log(posts)
-
-        return <div>{renderedPosts}</div> 
+        return <div className=''>{renderedPosts}</div> 
     } else return <LoadingAnimation/>
 };
 

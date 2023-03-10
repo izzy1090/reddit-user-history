@@ -1,5 +1,5 @@
 import LoadingAnimation from "./LoadingAnimation";
-import MonthConverter from "./MonthConverter";
+import DateConverter from "./DateConverter";
 
 function RedditUserProfile( {userProfile, loading} ) {
     
@@ -10,7 +10,7 @@ function RedditUserProfile( {userProfile, loading} ) {
             alt="The Reddit user's avatar."/>
         <div className="font-bold text-xl mb-1">{userProfile.name}</div>
         <div className="text-gray-700 text-base">
-            <div className="flex flex-row">Profile Created:<MonthConverter date={userProfile.created}/></div>
+            <div className="flex flex-row">Profile Created:<DateConverter date={userProfile.created}/></div>
             <div>Total Karma: {userProfile.total_karma}</div>
             <div>Awardee Karma: {userProfile.awardee_karma}</div>
             <div>Comment Karma: {userProfile.comment_karma}</div>
@@ -24,7 +24,7 @@ function RedditUserProfile( {userProfile, loading} ) {
     
     const content = !loading && userProfile && noContent.length !== 0 ? profileCard : <LoadingAnimation/>;
     
-    return <div className="flex items-center justify-center max-w-sm rounded overflow-hidden shadow-lg h-64">
+    return <div className="flex items-center justify-center max-w-sm rounded overflow-hidden border-1 border-panel-border-color bg-panel-bg-color shadow-lg h-64">
         { content }
     </div>;
 }

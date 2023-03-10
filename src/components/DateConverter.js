@@ -1,9 +1,9 @@
-function MonthConverter( { date } ){
+function DateConverter( { date, classNames } ){
     if (date === false){
-        return <div>Never edited</div>
+        return <div className="ml-1">never</div>
     }
     const returnedProfileCreationDate = new Date(date * 1000);
-    function monthConverter(month){
+    function DateConverter(month){
         if (month >= 0 && month <= 9){
             let incrementMonth = month;
             incrementMonth++;
@@ -11,10 +11,10 @@ function MonthConverter( { date } ){
             return addZero;
         } else return month;
     }
-    const months = monthConverter(returnedProfileCreationDate.getMonth());
+    const months = DateConverter(returnedProfileCreationDate.getMonth());
     const convertedProfileCreationDate = 
     `${months}/${returnedProfileCreationDate.getDate()}/${returnedProfileCreationDate.getFullYear()}`;
-    return <div className="pl-1">{convertedProfileCreationDate}</div>;
+    return <div className='pl-1'>{convertedProfileCreationDate}</div>;
 };
 
-export default MonthConverter;
+export default DateConverter;
