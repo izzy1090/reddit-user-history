@@ -11,9 +11,10 @@ function Subreddits({ subreddits }){
             if (!subreddit.data.icon_img){
                 subreddit.data.icon_img = RedditLogo;
             }
-            if (subreddit.data.subscribers <= 1000){
-                renderedSubscriberCount = <div className="mr-1">Need to figure out a way to say Number.0 k</div>
-            }
+            // this is for adding a formatting so that we can display anything above 1000 different (e.g. 1.1k subscribers)
+            // if (subreddit.data.subscribers <= 1000){
+            //     renderedSubscriberCount = <div className="mr-1">Need to figure out a way to say Number.0 k</div>
+            // }
             if (!subreddit.data[undefined]){
                 return (
                 <Panel key={i} className={'text-sm'}>

@@ -80,8 +80,8 @@ function Posts({posts}){
                 {selftextBody}
             </Panel>)
         })
-        return <div className=''>{renderedPosts}</div> 
-    } else return <LoadingAnimation/>
+        return <div>{renderedPosts}</div> 
+    } else return <Panel><LoadingAnimation/></Panel>
 };
 
 export default Posts;
