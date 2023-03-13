@@ -5,12 +5,15 @@ import { useState } from 'react';
 
 function Posts({posts}){
     const [ expanded, setExpanded ] = useState({});
-    // this function passes the posts ID to the setter function
+    // Function passes the posts ID to the setter function
     const handleExpand = (postId) => {
-        // when it gets passed to the setter function, it creates a prevExpanded state
-        // each prevExpanded state gets spread so that as posts are expanded, other posts won't close
-        // the setter function is also updating the postId key to an array and sets the value to be true
-        setExpanded(prevExpanded => ({...prevExpanded, [postId]: true}));
+        /* When it's passed to the setter function, it creates a prevExpanded state
+        each prevExpanded state gets spread so as posts expand, other posts stay open.
+        Setter function also updates the postId key to an array and sets the value to be true */
+        if (expanded[postId]){
+            // this conditional handles closing a div
+            setExpanded(prevExpanded=>({...prevExpanded, [postId]:false}))
+        } else setExpanded(prevExpanded => ({...prevExpanded, [postId]: true}));
     }
 
     if (posts.length !== 0){
@@ -26,6 +29,11 @@ function Posts({posts}){
                         <div className='whitespace-pre-wrap'>
                             {post.data.selftext}
                         </div>
+                        <button  
+                            className='font-light text-slate-500 mt-2 hover:underline'
+                            onClick={() => handleExpand(post.data.id)}>
+                            Hide
+                        </button>
                     </>
                 } else {
                     // else we truncate the posts without the isExpanded and postID var to be true
@@ -35,7 +43,7 @@ function Posts({posts}){
                         </div>
                         <button 
                             className='font-light text-slate-500 mt-2 hover:underline' 
-                            onClick={()=> handleExpand(post.data.id)}>
+                            onClick={() => handleExpand(post.data.id)}>
                                 See more...
                         </button>
                     </>
