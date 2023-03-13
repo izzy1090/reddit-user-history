@@ -16,6 +16,7 @@ module.exports = {
         'reddit-orange': 'rgb(252, 71, 30)',
         'user-link-color': 'rgb(55, 120, 204)',
         'comment-body-color':'rgb(245, 248, 252)',
+        'comment-bubble-color': 'rgb(136, 138, 140)',
         'reddit-border-orange': 'rgb(252, 71, 30)',
         'reddit-text-orange': 'rgb(252, 71, 30)',
         'panel-border-color': 'rgb(204, 204, 204)',

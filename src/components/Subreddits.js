@@ -32,7 +32,7 @@ function Subreddits({ subreddits }){
                             {subreddit.data.display_name_prefixed}</a>
                         </div>
                         <div className="flex flex-row pl-1 font-light text-slate-500">
-                            · created <DateConverter date={subreddit.data.created}/>
+                            · created <DateConverter date={subreddit.data.created} classNames='ml-1'/>
                         </div>
                     </div>
                     <div className='mb-1'>{subreddit.data.public_description}</div>

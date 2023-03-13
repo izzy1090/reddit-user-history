@@ -1,6 +1,6 @@
 function DateConverter( { date, classNames } ){
     if (date === false){
-        return <div className="ml-1">never</div>
+        return <div className={classNames}>never</div>
     }
     const returnedProfileCreationDate = new Date(date * 1000);
     function DateConverter(month){
@@ -14,7 +14,7 @@ function DateConverter( { date, classNames } ){
     const months = DateConverter(returnedProfileCreationDate.getMonth());
     const convertedProfileCreationDate = 
     `${months}/${returnedProfileCreationDate.getDate()}/${returnedProfileCreationDate.getFullYear()}`;
-    return <div className='pl-1'>{convertedProfileCreationDate}</div>;
+    return <div className={classNames}>{convertedProfileCreationDate}</div>;
 };
 
 export default DateConverter;

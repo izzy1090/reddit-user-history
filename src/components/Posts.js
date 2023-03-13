@@ -64,10 +64,10 @@ function Posts({posts}){
                             · post by <span className='hover:underline'>u/{post.data.author}</span>
                         </a>
                         <span className='flex flex-row ml-1'>
-                            on <DateConverter date={post.data.created}/>
+                            on <DateConverter date={post.data.created} classNames='ml-1'/>
                         </span>
                         <span className='flex flex-row ml-1'> 
-                            · edited <DateConverter date={post.data.edited}/>
+                            · edited <DateConverter date={post.data.edited} classNames='ml-1'/>
                         </span>
                     </div>
                 </div>
