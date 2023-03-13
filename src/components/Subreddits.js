@@ -5,8 +5,7 @@ import DateConverter from "./DateConverter";
 
 function Subreddits({ subreddits }){
     if (subreddits.length !== 0){
-        const renderedSubreddits = subreddits.data.children.map((subreddit, i)=>{
-            console.log(subreddit.data.subscribers)
+        const renderedSubreddits = subreddits.data.children.map((subreddit)=>{
             let renderedSubscriberCount;
             if (!subreddit.data.icon_img){
                 subreddit.data.icon_img = RedditLogo;
@@ -17,7 +16,7 @@ function Subreddits({ subreddits }){
             // }
             if (!subreddit.data[undefined]){
                 return (
-                <Panel key={i} className={'text-sm'}>
+                <Panel key={subreddit.data.id} className={'text-normal'}>
                     <div className="flex flex-row items-center mb-2 text-xs">
                         <a target="_blank" 
                             rel='noreferrer' 

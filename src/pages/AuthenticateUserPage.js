@@ -17,7 +17,7 @@ function AuthenticateUserPage ({handleAuthToken, authToken}) {
     const {REACT_APP_CLIENT_ID, REACT_APP_RANDOM_STRING, REACT_APP_REDIRECT_URI} = process.env;
     const authorizationURL = `https://www.reddit.com/api/v1/authorize?client_id=${REACT_APP_CLIENT_ID}&response_type=code&state=${REACT_APP_RANDOM_STRING}&redirect_uri=${REACT_APP_REDIRECT_URI}&duration=permanent&scope=${REDDIT_SCOPE}`
 
-    const appDescription = <Panel className='w-[500px] text-sm'>
+    const appDescription = <Panel className='w-[500px] text-normal'>
         <p className='font-bold text-center mb-1'>Welcome to the Reddit History application!</p>
         <div className='text-justify p-3'>
             <p className='mb-2'>This app allows you to view your subscribed subreddits, posts, and comments you've posted on Reddit.</p>

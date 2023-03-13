@@ -15,10 +15,8 @@ function Posts({posts}){
             setExpanded(prevExpanded=>({...prevExpanded, [postId]:false}))
         } else setExpanded(prevExpanded => ({...prevExpanded, [postId]: true}));
     }
-
     if (posts.length !== 0){
-        const renderedPosts = posts.data.children.map( (post, i) => {
-            // console.log(post)
+        const renderedPosts = posts.data.children.map( (post) => {
             let selftextBody;
             // then init. the expanded variable to the expanded state with the post's ID as a key
             const isExpanded = expanded[post.data.id]
@@ -51,7 +49,7 @@ function Posts({posts}){
                 // if the post is not longer than 500 characters, then render the post normally
             } else selftextBody = <div className='whitespace-pre-wrap'>{post.data.selftext}</div>
             return (
-            <Panel key={i} className='text-sm'> 
+            <Panel key={post.data.id} className='text-sm'> 
                 <div className="flex flex-row items-center mb-1 text-xs">
                     <a target='_blank' rel="noreferrer" 
                         href={`https://www.reddit.com/${post.data.subreddit_name_prefixed}`} 
