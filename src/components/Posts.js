@@ -1,53 +1,11 @@
 import DateConverter from './DateConverter';
+import ExpandContent from './ExpandContent';
 import LoadingAnimation from './LoadingAnimation';
 import Panel from './Panel';
-import { useState } from 'react';
 
 function Posts({posts}){
-    const [ expanded, setExpanded ] = useState({});
-    // Function passes the posts ID to the setter function
-    const handleExpand = (postId) => {
-        /* When it's passed to the setter function, it creates a prevExpanded state
-        each prevExpanded state gets spread so as posts expand, other posts stay open.
-        Setter function also updates the postId key to an array and sets the value to be true */
-        if (expanded[postId]){
-            // this conditional handles closing a div
-            setExpanded(prevExpanded=>({...prevExpanded, [postId]:false}))
-        } else setExpanded(prevExpanded => ({...prevExpanded, [postId]: true}));
-    }
     if (posts.length !== 0){
         const renderedPosts = posts.data.children.map( (post) => {
-            let selftextBody;
-            // then init. the expanded variable to the expanded state with the post's ID as a key
-            const isExpanded = expanded[post.data.id]
-            if (post.data.selftext.length > 500){
-                // if isExpanded has a value
-                if (isExpanded){
-                    // we want to initialize any posts with the true isExpanded variable to display
-                    selftextBody = <>
-                        <div className='whitespace-pre-wrap'>
-                            {post.data.selftext}
-                        </div>
-                        <button className='font-light text-slate-500 mt-2 hover:underline'
-                            onClick={() => handleExpand(post.data.id)}>
-                            Hide
-                        </button>
-                    </>
-                } else {
-                    // else we truncate the posts without the isExpanded and postID var to be true
-                    selftextBody = <>
-                        <div className='truncate overflow-hidden h-20 whitespace-pre-wrap'>
-                            {post.data.selftext}
-                        </div>
-                        <button 
-                            className='font-light text-slate-500 mt-2 hover:underline' 
-                            onClick={() => handleExpand(post.data.id)}>
-                                See more...
-                        </button>
-                    </>
-                }
-                // if the post is not longer than 500 characters, then render the post normally
-            } else selftextBody = <div className='whitespace-pre-wrap'>{post.data.selftext}</div>
             return (
             <Panel key={post.data.id} className='text-sm'> 
                 <div className="flex flex-row items-center mb-1 text-xs">
@@ -81,7 +39,7 @@ function Posts({posts}){
                     display:'inline-block', 
                     backgroundColor: post.data.link_flair_background_color || 'orange',}}>
                 {post.data.link_flair_text} </div>}
-                {selftextBody}
+                <ExpandContent data={post.data.selftext} id={post.data.id}/>
             </Panel>
         )})
         
