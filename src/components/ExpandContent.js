@@ -19,7 +19,7 @@ function ExpandContent( {data, id} ){
         // if isExpanded has a value
         if (isExpanded){
             // we want to initialize any posts with the true isExpanded variable to display
-            return (content = <div className="p-2">
+            return (content = <div className="pt-1 pb-1">
                 <div className="overflow-auto whitespace-pre-wrap ">
                     {data}   
                 </div>
@@ -28,7 +28,7 @@ function ExpandContent( {data, id} ){
                     Hide
                 </button>
             </div>)
-        } else return content = <div className="p-2">
+        } else return content = <div className="pt-1 pb-1">
             <div className="truncate overflow-hidden h-20 whitespace-pre-wrap">
                 {data}   
             </div>
@@ -38,7 +38,7 @@ function ExpandContent( {data, id} ){
             </button>
         </div>
     // if the post is not longer than 500 characters, then render the post normally
-    } else content = <div className="p-2">
+    } else content = <div className="pt-1 pb-1">
         <div className="whitespace-pre-wrap">
             {data}   
         </div>
