@@ -12,7 +12,7 @@ function Comments ({ comments }) {
             return (
             <Panel key={comment.data.id} className='text-sm'>
                 <div className='flex flex-row border-b-2 border-slate-200 
-                    mb-1 text-xs text-slate-500'>
+                    mb-1 text-slate-500'>
                     <div className="flex flex-row">
                         <CommentIcon className="fill-comment-bubble-color"/>
                         <DateConverter date={comment.data.created} classNames='ml-1 mr-1'/>
@@ -25,7 +25,7 @@ function Comments ({ comments }) {
                                 {comment.data.author}
                         </a>
                         <a target="_blank" rel="noreferrer" href={comment.data.link_url} 
-                            className="font-light ml-1 ">
+                            className="ml-1 ">
                             commented on <span className="hover:underline">
                                 {comment.data.link_title}
                             </span> 

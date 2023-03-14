@@ -24,7 +24,7 @@ function ExpandContent( {data, id} ){
                     {data}   
                 </div>
                 <button onClick={()=>handleExpand(id)} 
-                    className="mt-1 font-light text-slate-500 hover:underline">
+                    className="mt-1 text-slate-500 text-xs font-semibold hover:underline">
                     Hide
                 </button>
             </div>)
@@ -33,7 +33,7 @@ function ExpandContent( {data, id} ){
                 {data}   
             </div>
             <button onClick={()=>handleExpand(id)} 
-                className="mt-1 font-light text-slate-500 hover:underline">
+                className="mt-2 text-slate-500 text-xs font-semibold hover:underline">
                 See more...
             </button>
         </div>

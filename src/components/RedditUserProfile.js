@@ -3,19 +3,35 @@ import DateConverter from "./DateConverter";
 
 function RedditUserProfile( {userProfile, loading} ) {
     
-    const profileCard = <div className="flex flex-col items-center m-3">
+    const profileCard = <div className="flex flex-col items-center">
         <img className="w-[80px] h-[80px]" 
             src={userProfile.snoovatar_img} 
             alt="The Reddit user's avatar."/>
-        <div className="font-bold text-xl mb-1">{userProfile.name}</div>
+        <div className="font-bold text-lg mb-1">
+            {userProfile.name}
+        </div>
         <div className="text-gray-700 text-base">
             <div className="flex flex-row">
-                Profile Created:<DateConverter date={userProfile.created} classNames='ml-1'/>
+                <span className="font-semibold">Profile Created:</span>
+                <DateConverter date={userProfile.created} classNames='ml-1'/>
             </div>
-            <div>Total Karma: {userProfile.total_karma}</div>
-            <div>Awardee Karma: {userProfile.awardee_karma}</div>
-            <div>Comment Karma: {userProfile.comment_karma}</div>
-            <div>Gold Creddits: {userProfile.gold_creddits}</div>
+            <div className="flex flex-row">
+                <span className="font-semibold">Total Karma:</span> 
+                <div className="ml-1">{userProfile.total_karma}</div>
+            </div>
+            <div className="flex flex-row">
+                <span className="font-semibold">Awardee Karma:</span> 
+                <div className="ml-1">{userProfile.awardee_karma}</div>
+            </div>
+            
+            <div className="flex flex-row">
+                <span className="font-semibold">Comment Karma:</span> 
+                <div className="ml-1">{userProfile.comment_karma}</div>
+            </div>
+            <div className="flex flex-row">
+                <span className="font-semibold">Gold Creddits:</span>
+                <div className="ml-1">{userProfile.gold_creddits}</div>
+            </div>
         </div> 
     </div>;
     

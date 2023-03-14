@@ -10,7 +10,14 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        sans: ['IBMPlexSans', 'Arial', 'sans-serif']
+        'ibm-plex-sans': ['IBMPlexSans', 'sans-serif'],
+      },
+      fontWeight: {
+        light: 200,
+        normal: 400,
+        medium: 500,
+        semibold: 600,
+        bold: 700,
       },
       colors: {
         'reddit-orange': 'rgb(252, 71, 30)',

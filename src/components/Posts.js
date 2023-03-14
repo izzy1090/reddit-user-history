@@ -11,13 +11,16 @@ function Posts({posts}){
                 <div className="flex flex-row items-center mb-1 text-xs">
                     <a target='_blank' rel="noreferrer" 
                         href={`https://www.reddit.com/${post.data.subreddit_name_prefixed}`} 
-                        className='hover:underline'>
+                        className='font-semibold hover:underline'>
                             {post.data.subreddit_name_prefixed}
                     </a>
-                    <div className='ml-1 flex flex-row font-light text-slate-500'>
+                    <div className='ml-1 flex flex-row text-slate-500'>
                         <a target='_blank' rel='noreferrer' 
                             href={`https://www.reddit.com/user/${post.data.author}/`}>
-                            · post by <span className='hover:underline'>u/{post.data.author}</span>
+                            · post by 
+                            <span className='ml-1 hover:underline'>
+                                u/{post.data.author}
+                            </span>
                         </a>
                         <span className='flex flex-row ml-1'>
                             on <DateConverter date={post.data.created} classNames='ml-1'/>
