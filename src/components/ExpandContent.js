@@ -37,7 +37,7 @@ function ExpandContent( {data, id} ){
                 See more...
             </button>
         </div>
-    // if the post is not longer than 500 characters, then render the post normally
+    // otherwise render post normally
     } else content = <div className="pt-1 pb-1">
         <div className="whitespace-pre-wrap">
             {data}   

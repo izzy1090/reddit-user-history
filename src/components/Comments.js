@@ -13,9 +13,12 @@ function Comments ({ comments }) {
             <Panel key={comment.data.id} className='text-sm'>
                 <div className='flex flex-row border-b-2 border-slate-200 
                     mb-1 text-xs text-slate-500'>
-                    <CommentIcon className="fill-comment-bubble-color"/>
-                    <DateConverter date={comment.data.created} classNames='ml-1 mr-1'/>
-                    · <div className="mb-3 pl-1">
+                    <div className="flex flex-row">
+                        <CommentIcon className="fill-comment-bubble-color"/>
+                        <DateConverter date={comment.data.created} classNames='ml-1 mr-1'/>
+                    </div>
+                    · 
+                    <div className="mb-3 pl-1">
                          <a target="_target" rel="noreferrer"
                             href={`https://www.reddit.com/user/${comment.data.author}`}
                             className="hover:underline text-user-link-color">
