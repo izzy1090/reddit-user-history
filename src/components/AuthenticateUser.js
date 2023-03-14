@@ -4,9 +4,7 @@ import Button from "./Button";
 import classNames from "classnames";
 
 function AuthenticateUser ( { className, appDescription, authorizationURL, handleAuthToken } ) {  
-   
     const { navigate } = useNavigation();
-
     const container = classNames(
         'flex',
         'flex-col',
@@ -14,8 +12,7 @@ function AuthenticateUser ( { className, appDescription, authorizationURL, handl
         'justify-center', 
         'h-screen',
         className
-    ) 
-
+    ); 
     function parseAuthorization(){
         // extract the window path of the browser as a query sting
         const queryString = window.location.search;
@@ -23,7 +20,7 @@ function AuthenticateUser ( { className, appDescription, authorizationURL, handl
         const urlParams = new URLSearchParams(queryString);  
         // We can then use urlParams to parse through the returned path to find the generated authorization token
         return urlParams.get("code");
-    }
+    };
     
     useEffect(()=>{
         const returnedToken = parseAuthorization();

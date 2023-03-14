@@ -1,4 +1,4 @@
-import Link from "./Link";
+import Options from "./Options";
 
 function Navbar(){
     const links = [
@@ -7,7 +7,7 @@ function Navbar(){
         {label: 'Comments', path: '/userprofile/comments'}
     ]
     const renderedLinks = links.map((component)=> {
-        return <Link 
+        return <Options 
             key={component.label}
             to={component.path}
             className='mr-5'
@@ -17,7 +17,7 @@ function Navbar(){
             border-reddit-border-orange'
             >
                 {component.label}    
-        </Link>;
+        </Options>;
     });
     return <div className="overflow-y-scroll flex flex-row items-start">
         {renderedLinks}

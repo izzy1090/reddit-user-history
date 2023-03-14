@@ -11,11 +11,12 @@ function Comments ({ comments }) {
         const renderedUserComments = comments.data.children.map( (comment) => {
             return (
             <Panel key={comment.data.id} className='text-sm'>
-                <div className='flex flex-row border-b-2 border-slate-200 mb-1'>
+                <div className='flex flex-row border-b-2 border-slate-200 
+                    mb-1 text-xs text-slate-500'>
                     <CommentIcon className="fill-comment-bubble-color"/>
-                    <DateConverter date={comment.data.created} classNames='text-xs text-slate-500 ml-1'/>
-                    <div className="mb-3 text-xs pl-1 text-slate-500">
-                        · <a target="_target" rel="noreferrer"
+                    <DateConverter date={comment.data.created} classNames='ml-1 mr-1'/>
+                    · <div className="mb-3 pl-1">
+                         <a target="_target" rel="noreferrer"
                             href={`https://www.reddit.com/user/${comment.data.author}`}
                             className="hover:underline text-user-link-color">
                                 {comment.data.author}
