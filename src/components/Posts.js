@@ -31,7 +31,9 @@ function Posts({posts}){
                     </div>
                 </div>
                 <div className='mb-1 text-base font-semibold'>
-                    <a target='_blank' rel='noreferrer' href={post.data.url} className='hover:underline'>
+                    <a target='_blank' rel='noreferrer' 
+                        href={post.data.url} 
+                        className='hover:underline'>
                         {post.data.title}
                     </a>
                 </div>
