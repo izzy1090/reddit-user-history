@@ -13,7 +13,7 @@ function DateConverter( { date, classNames } ){
     }
     const months = DateConverter(returnedProfileCreationDate.getMonth());
     const convertedProfileCreationDate = 
-    `${months}/${returnedProfileCreationDate.getDate()}/${returnedProfileCreationDate.getFullYear()}`;
+    `${months}/${returnedProfileCreationDate.getDate()}/${(returnedProfileCreationDate.getFullYear()-2000)}`;
     return <div className={classNames}>{convertedProfileCreationDate}</div>;
 };
 

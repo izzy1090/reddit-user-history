@@ -31,8 +31,7 @@ function AuthenticateUserPage ({handleAuthToken, authToken}) {
         appDescription={appDescription} 
         authorizationURL={authorizationURL} 
         handleAuthToken={handleAuthToken} 
-        authToken={authToken}
-        />
+        authToken={authToken}/>
 }
 
 export default AuthenticateUserPage;
