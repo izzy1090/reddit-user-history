@@ -1,6 +1,8 @@
 import { useState } from "react";
 
-function ThreadBody( {data, id} ){
+function ThreadBody( {data, id, media} ){
+    console.log(media)
+
     const [ expanded, setIsExpanded ] = useState({});
     let content;
     // Function passes the posts ID to the setter function
