@@ -2,12 +2,12 @@ import LoadingAnimation from "./Loading";
 import Panel from "./Panel";
 import { ReactComponent as CommentIcon } from "../public/images/comment-bubble-icon.svg";
 import Dates from "./Dates";
-import ExpandContent from "./ThreadBody";
+import CommentBody from "./CommentBody";
 
 function Comments ({ comments }) {
 
     if (comments.length !== 0){
-        console.log(comments)
+        console.log('Returned comments: ', comments)
         const renderedUserComments = comments.data.children.map( (comment) => {
             return (
             <Panel key={comment.data.id} className='text-sm'>
@@ -24,7 +24,7 @@ function Comments ({ comments }) {
                             className="hover:underline text-user-link-color">
                                 {comment.data.author}
                         </a>
-                        <a target="_blank" rel="noreferrer" href={comment.data.link_url} 
+                        <a target="_blank" rel="noreferrer" href={comment.data.link_permalink} 
                             className="ml-1 ">
                             commented on <span className="hover:underline">
                                 {comment.data.link_title}
@@ -35,7 +35,7 @@ function Comments ({ comments }) {
                 <div className="flex flex-row mt-2">
                     <div className="border-dashed border-r-2 border-slate-200 ml-2 mr-3"/>
                     <div className="p-2 bg-comment-body-color rounded-md w-full h-full">
-                        <ExpandContent data={comment.data.body} id={comment.data.id}/>
+                        <CommentBody id={comment.data.id} data={comment.data.body} media={comment.data.link_url}/>
                     </div>
                 </div>
             </Panel>
