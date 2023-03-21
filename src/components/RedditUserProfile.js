@@ -1,5 +1,5 @@
-import LoadingAnimation from "./LoadingAnimation";
-import DateConverter from "./DateConverter";
+import LoadingAnimation from "./Loading";
+import Dates from "./Dates";
 
 function RedditUserProfile( {userProfile, loading} ) {
     if (userProfile){
@@ -17,7 +17,7 @@ function RedditUserProfile( {userProfile, loading} ) {
             <div className="text-gray-700 text-base">
                 <div className="flex flex-row">
                     <span className="font-semibold">Profile Created:</span>
-                    <DateConverter date={userProfile.created} classNames='ml-1'/>
+                    <Dates date={userProfile.created} classNames='ml-1'/>
                 </div>
                 <div className="flex flex-row">
                     <span className="font-semibold">Total Karma:</span> 

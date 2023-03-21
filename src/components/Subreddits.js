@@ -1,7 +1,7 @@
-import LoadingAnimation from "./LoadingAnimation";
+import LoadingAnimation from "./Loading";
 import Panel from "./Panel";
 import RedditLogo from '../public/images/reddit_logo.png';
-import DateConverter from "./DateConverter";
+import Dates from "./Dates";
 
 function Subreddits({ subreddits }){
     if (subreddits.length !== 0){
@@ -30,7 +30,7 @@ function Subreddits({ subreddits }){
                         </div>
                         <div className="flex flex-row pl-1 text-slate-500">
                             · created 
-                            <DateConverter date={subreddit.data.created} classNames='ml-1'/>
+                            <Dates date={subreddit.data.created} classNames='ml-1'/>
                         </div>
                     </div>
                     <div className='mb-1'>

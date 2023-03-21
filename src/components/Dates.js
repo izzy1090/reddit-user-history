@@ -1,4 +1,4 @@
-function DateConverter( { date, classNames } ){
+function Dates( { date, classNames } ){
     if (date === false){
         return <div className={classNames}>never</div>
     }
@@ -17,4 +17,4 @@ function DateConverter( { date, classNames } ){
     return <div className={classNames}>{convertedProfileCreationDate}</div>;
 };
 
-export default DateConverter;
+export default Dates;

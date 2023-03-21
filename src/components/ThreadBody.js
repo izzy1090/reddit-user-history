@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function ExpandContent( {data, id} ){
+function ThreadBody( {data, id} ){
     const [ expanded, setIsExpanded ] = useState({});
     let content;
     // Function passes the posts ID to the setter function
@@ -46,4 +46,4 @@ function ExpandContent( {data, id} ){
     return content;
 };
 
-export default ExpandContent;
+export default ThreadBody;

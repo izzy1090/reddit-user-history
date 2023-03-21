@@ -1,8 +1,8 @@
-import LoadingAnimation from "./LoadingAnimation";
+import LoadingAnimation from "./Loading";
 import Panel from "./Panel";
 import { ReactComponent as CommentIcon } from "../public/images/comment-bubble-icon.svg";
-import DateConverter from "./DateConverter";
-import ExpandContent from "./ExpandContent";
+import Dates from "./Dates";
+import ExpandContent from "./ThreadBody";
 
 function Comments ({ comments }) {
 
@@ -15,7 +15,7 @@ function Comments ({ comments }) {
                     mb-1 text-slate-500'>
                     <div className="flex flex-row">
                         <CommentIcon className="fill-comment-bubble-color"/>
-                        <DateConverter date={comment.data.created} classNames='ml-1 mr-1'/>
+                        <Dates date={comment.data.created} classNames='ml-1 mr-1'/>
                     </div>
                     · 
                     <div className="mb-3 pl-1">

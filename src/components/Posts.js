@@ -1,11 +1,12 @@
-import DateConverter from './DateConverter';
-import ExpandContent from './ExpandContent';
-import LoadingAnimation from './LoadingAnimation';
+import Dates from './Dates';
+import ExpandContent from './ThreadBody';
+import LoadingAnimation from './Loading';
 import Panel from './Panel';
 
 function Posts({posts}){
     if (posts.length !== 0){
         const renderedPosts = posts.data.children.map( (post) => {
+            console.log(post)
             return (
             <Panel key={post.data.id} className='text-sm'> 
                 <div className="flex flex-row items-center mb-1 text-xs">
@@ -23,10 +24,10 @@ function Posts({posts}){
                             </span>
                         </a>
                         <span className='flex flex-row ml-1'>
-                            on <DateConverter date={post.data.created} classNames='ml-1'/>
+                            on <Dates date={post.data.created} classNames='ml-1'/>
                         </span>
                         <span className='flex flex-row ml-1'> 
-                            · edited <DateConverter date={post.data.edited} classNames='ml-1'/>
+                            · edited <Dates date={post.data.edited} classNames='ml-1'/>
                         </span>
                     </div>
                 </div>
