@@ -4,6 +4,7 @@ import RedditLogo from '../public/images/reddit_logo.png';
 import Dates from "./Dates";
 
 function Subreddits({ subreddits }){
+    console.log(subreddits)
     if (subreddits.length !== 0){
         const renderedSubreddits = subreddits.data.children.map((subreddit)=>{
             let renderedSubscriberCount;
