@@ -7,7 +7,6 @@ function Posts({ posts }){
     if (posts.length !== 0){
         console.log('returned posts: ', posts)
         const renderedPosts = posts.data.children.map( (post) => {
-            console.log(post)
             return (
             <Panel key={post.data.id} className='text-sm'> 
                 <div className="flex flex-row items-center mb-1 text-xs">

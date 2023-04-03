@@ -7,7 +7,6 @@ function CommentBody( { data, id, media } ){
         const parser = new DOMParser();
         const cleanText = parser.parseFromString(data, 'text/html').body.textContent.replaceAll('&#x200B;', '');
         const checkJpgPng = media.includes('.jpg') || media.includes('.png')
-
         let renderedMedia;
         if (checkJpgPng){
             renderedMedia = <>
@@ -16,7 +15,6 @@ function CommentBody( { data, id, media } ){
                 </a>
             </>
         }
-
 
         let content;
         // Function passes the posts ID to the setter function

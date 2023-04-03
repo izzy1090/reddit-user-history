@@ -10,7 +10,23 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        'ibm-plex-sans': ['IBMPlexSans', 'sans-serif'],
+        'ibm-plex-sans': {
+          'ibm-plex-sans': ['IBMPlexSans', 'sans-serif'],
+          'ibm-plex-sans-bold': ['IBMPlexSans-Bold', 'sans-serif'],
+          'ibm-plex-sans-bolditalic': ['IBMPlexSans-BoldItalic', 'sans-serif'],
+          'ibm-plex-sans-extralight': ['IBMPlexSans-ExtraLight', 'sans-serif'],
+          'ibm-plex-sans-extralightitalic': ['IBMPlexSans-ExtraLightItalic', 'sans-serif'],
+          'ibm-plex-sans-italic': ['IBMPlexSans-Italic', 'sans-serif'],
+          'ibm-plex-sans-light': ['IBMPlexSans-Light', 'sans-serif'],
+          'ibm-plex-sans-lightitalic': ['IBMPlexSans-LightItalic', 'sans-serif'],
+          'ibm-plex-sans-medium': ['IBMPlexSans-Medium', 'sans-serif'],
+          'ibm-plex-sans-mediumitalic': ['IBMPlexSans-MediumItalic', 'sans-serif'],
+          'ibm-plex-sans-regular': ['IBMPlexSans-Regular', 'sans-serif'],
+          'ibm-plex-sans-semibold': ['IBMPlexSans-SemiBold', 'sans-serif'],
+          'ibm-plex-sans-semibolditalic': ['IBMPlexSans-SemiBoldItalic', 'sans-serif'],
+          'ibm-plex-sans-thin': ['IBMPlexSans-Thin', 'sans-serif'],
+          'ibm-plex-sans-thinitalic': ['IBMPlexSans-ThinItalic', 'sans-serif'],
+        }
       },
       fontWeight: {
         light: 200,

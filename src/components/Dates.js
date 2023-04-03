@@ -2,9 +2,6 @@ function Dates( { date, classNames } ){
     if (date === false){
         return <div className={classNames}>never</div>
     }
-    if (date){
-        console.log(date)
-    }
     const returnedProfileCreationDate = new Date(date * 1000);
     function DateConverter(month){
         if (month >= 0 && month <= 9){
