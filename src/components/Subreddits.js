@@ -15,7 +15,7 @@ function Subreddits({ subreddits }){
             if (subreddit.data){
                 console.log(subreddit.data.public_description)
                 const parser = new DOMParser();
-                const cleanPublicDescription = parser.parseFromString(subreddit.data.public_description, 'text/html').body.textContent
+                const cleanPublicDescription = parser.parseFromString(subreddit.data.public_description, 'text/html').body.textContent;
                 return (
                 <Panel key={subreddit.data.id}>
                     <div className="flex flex-row items-center mb-2 text-xs">
