@@ -1,9 +1,11 @@
 import { useState } from "react";
+import ParseURL from "./ParseUrl";
+import EmbedImages from "./EmbedImages";
 
-function PostBody( { data, id } ){
+function PostBody( { data, id, media } ){
     const [ expanded, setIsExpanded ] = useState({});
     
-    if (data){
+    if (data || media){
         const parser = new DOMParser();
         const cleanText = parser.parseFromString(data, 'text/html').body.textContent.replaceAll('&#x200B;', '');
 
@@ -27,7 +29,8 @@ function PostBody( { data, id } ){
                 return (content = <div className="pt-1 pb-1">
                     
                     <div className="overflow-auto whitespace-pre-wrap ">
-                        {cleanText}
+                        <ParseURL children={cleanText}/>
+                        <EmbedImages media={media}/> 
                     </div>
                     <button onClick={()=>handleExpand(id)} 
                         className="mt-1 text-slate-500 text-xs font-semibold hover:underline">
@@ -36,7 +39,8 @@ function PostBody( { data, id } ){
                 </div>)
             } else return content = <div className="pt-1 pb-1">
                 <div className="truncate overflow-hidden h-20 whitespace-pre-wrap">
-                    {cleanText}   
+                    <ParseURL children={cleanText}/>   
+                    <EmbedImages media={media}/>
                 </div>
                 <button onClick={()=>handleExpand(id)} 
                     className="mt-2 text-slate-500 text-xs font-semibold hover:underline">
@@ -46,7 +50,8 @@ function PostBody( { data, id } ){
         // otherwise render post normally
         } else content = <div className="pt-1 pb-1">
             <div className="whitespace-pre-wrap">
-                {cleanText}   
+                <ParseURL children={cleanText}/>
+                <EmbedImages media={media}/>
             </div>
         </div>
         return content;

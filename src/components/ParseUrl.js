@@ -7,7 +7,7 @@ function ParseURL({children}){
             target="_blank" rel="noopener noreferrer"
             className="text-user-link-color hover:underline">
             {/* below regex grabs only the domain of the URL, rather than the full URL to keep things cleaner */}
-            {decoratedText.match(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:/\n?]+)/)[1]}
+            {decoratedText.match(/^(?:https?:\/\/)?(?:www\.)?([^:/\n?]+)/)[1]}
         </a>)}>
             {children}
     </ReactLinkify>

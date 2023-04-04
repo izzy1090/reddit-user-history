@@ -5,9 +5,7 @@ import Dates from "./Dates";
 import CommentBody from "./CommentBody";
 
 function Comments ({ comments }) {
-
     if (comments.length !== 0){
-        console.log('Returned comments: ', comments)
         const renderedUserComments = comments.data.children.map( (comment) => {
             return (
             <Panel key={comment.data.id} className='text-sm'>
@@ -35,7 +33,8 @@ function Comments ({ comments }) {
                 <div className="flex flex-row mt-2">
                     <div className="border-dashed border-r-2 border-slate-200 ml-2 mr-3"/>
                     <div className="p-2 bg-comment-body-color rounded-md w-full h-full overflow-auto">
-                        <CommentBody id={comment.data.id} data={comment.data.body} media={comment.data.link_url}/>
+                        <CommentBody id={comment.data.id} data={comment.data.body} 
+                            media={comment.data.link_url}/>
                     </div>
                 </div>
             </Panel>

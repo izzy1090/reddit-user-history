@@ -1,24 +1,14 @@
 import { useState } from "react";
 import ParseURL from "./ParseUrl";
+import EmbedImages from "./EmbedImages";
+
 
 function CommentBody( { data, id, media } ){
     const [ expanded, setIsExpanded ] = useState({});
     
     if (data || media){
-        // console.log('returned data: ', data)
-        // console.log('returned media: ', media)
         const parser = new DOMParser();
         const cleanBody = parser.parseFromString(data, 'text/html').body.textContent.replaceAll('&#x200B;', '');
-        
-        const checkJpgPng = media.includes('.jpg') || media.includes('.png')
-        let renderedMedia;
-        if (checkJpgPng){
-            renderedMedia = <>
-                <a target='_blank' rel="noreferrer" href={media}>
-                    <img src={media} alt="Embedded images from comment section."/>
-                </a>
-            </>
-        }
 
         let content;
         // Function passes the posts ID to the setter function
@@ -40,7 +30,7 @@ function CommentBody( { data, id, media } ){
                 return (content = <div className="pt-1 pb-1">
                     <div className="overflow-auto whitespace-pre-wrap ">
                         <ParseURL children={cleanBody}/>
-                        {renderedMedia}   
+                        <EmbedImages media={media}/> 
                     </div>
                     <button onClick={()=>handleExpand(id)} 
                         className="mt-1 text-slate-500 text-xs font-semibold hover:underline">
@@ -50,7 +40,7 @@ function CommentBody( { data, id, media } ){
             } else return content = <div className="pt-1 pb-1">
                 <div className="truncate h-20 whitespace-pre-wrap">
                     <ParseURL children={cleanBody}/>
-                    {renderedMedia}
+                    <EmbedImages media={media}/> 
                 </div>
                 <button onClick={()=>handleExpand(id)} 
                     className="mt-2 text-slate-500 text-xs font-semibold hover:underline">
@@ -61,7 +51,7 @@ function CommentBody( { data, id, media } ){
         } else content = <div className="pt-1 pb-1">
             <div className="whitespace-pre-wrap">
                 <ParseURL children={cleanBody}/>
-                {renderedMedia}
+                <EmbedImages media={media}/> 
             </div>
         </div>
         return content;
