@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ParseURL from "./ParseUrl";
-import EmbedImages from "./EmbedImages";
+import EmbeddedMedia from "./EmbeddedMedia";
+import PostImages from "./PostImages";
 
 function PostBody( { data, id, media } ){
     const [ expanded, setIsExpanded ] = useState({});
@@ -8,7 +9,7 @@ function PostBody( { data, id, media } ){
     if (data || media){
         const parser = new DOMParser();
         const cleanText = parser.parseFromString(data, 'text/html').body.textContent.replaceAll('&#x200B;', '');
-
+        
         let content;
         // Function passes the posts ID to the setter function
         const handleExpand = (postId) => {
@@ -29,8 +30,9 @@ function PostBody( { data, id, media } ){
                 return (content = <div className="pt-1 pb-1">
                     
                     <div className="overflow-auto whitespace-pre-wrap ">
+                        <PostImages children={cleanText}/>
                         <ParseURL children={cleanText}/>
-                        <EmbedImages media={media}/> 
+                        <EmbeddedMedia media={media}/> 
                     </div>
                     <button onClick={()=>handleExpand(id)} 
                         className="mt-1 text-slate-500 text-xs font-semibold hover:underline">
@@ -39,8 +41,9 @@ function PostBody( { data, id, media } ){
                 </div>)
             } else return content = <div className="pt-1 pb-1">
                 <div className="truncate overflow-hidden h-20 whitespace-pre-wrap">
+                    <PostImages children={cleanText}/>
                     <ParseURL children={cleanText}/>   
-                    <EmbedImages media={media}/>
+                    <EmbeddedMedia media={media}/>
                 </div>
                 <button onClick={()=>handleExpand(id)} 
                     className="mt-2 text-slate-500 text-xs font-semibold hover:underline">
@@ -50,8 +53,9 @@ function PostBody( { data, id, media } ){
         // otherwise render post normally
         } else content = <div className="pt-1 pb-1">
             <div className="whitespace-pre-wrap">
+                <PostImages children={cleanText}/>
                 <ParseURL children={cleanText}/>
-                <EmbedImages media={media}/>
+                <EmbeddedMedia media={media}/>
             </div>
         </div>
         return content;

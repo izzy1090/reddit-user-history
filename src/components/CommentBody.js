@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ParseURL from "./ParseUrl";
-import EmbedImages from "./EmbedImages";
-
+import EmbeddedMedia from "./EmbeddedMedia";
+import PostImages from "./PostImages";
 
 function CommentBody( { data, id, media } ){
     const [ expanded, setIsExpanded ] = useState({});
@@ -28,9 +28,10 @@ function CommentBody( { data, id, media } ){
             if (isExpanded){
                 // we want to initialize any posts with the true isExpanded variable to display
                 return (content = <div className="pt-1 pb-1">
-                    <div className="overflow-auto whitespace-pre-wrap ">
+                    <div className="overflow-auto whitespace-pre-wrap">
                         <ParseURL children={cleanBody}/>
-                        <EmbedImages media={media}/> 
+                        <PostImages children={cleanBody}/>
+                        <EmbeddedMedia media={media}/> 
                     </div>
                     <button onClick={()=>handleExpand(id)} 
                         className="mt-1 text-slate-500 text-xs font-semibold hover:underline">
@@ -40,7 +41,8 @@ function CommentBody( { data, id, media } ){
             } else return content = <div className="pt-1 pb-1">
                 <div className="truncate h-20 whitespace-pre-wrap">
                     <ParseURL children={cleanBody}/>
-                    <EmbedImages media={media}/> 
+                    <PostImages children={cleanBody}/>
+                    <EmbeddedMedia media={media}/> 
                 </div>
                 <button onClick={()=>handleExpand(id)} 
                     className="mt-2 text-slate-500 text-xs font-semibold hover:underline">
@@ -51,7 +53,8 @@ function CommentBody( { data, id, media } ){
         } else content = <div className="pt-1 pb-1">
             <div className="whitespace-pre-wrap">
                 <ParseURL children={cleanBody}/>
-                <EmbedImages media={media}/> 
+                <PostImages children={cleanBody}/>
+                <EmbeddedMedia media={media}/> 
             </div>
         </div>
         return content;
