@@ -5,17 +5,17 @@ function CommentBody( { data, id, media } ){
     const [ expanded, setIsExpanded ] = useState({});
     
     if (data || media){
-        console.log(data)
+        // console.log('returned data: ', data)
+        // console.log('returned media: ', media)
         const parser = new DOMParser();
-        const cleanBody = parser.parseFromString(data, 'text/html').body.textContent.replaceAll('&#x200B;', '')
+        const cleanBody = parser.parseFromString(data, 'text/html').body.textContent.replaceAll('&#x200B;', '');
         
         const checkJpgPng = media.includes('.jpg') || media.includes('.png')
         let renderedMedia;
         if (checkJpgPng){
             renderedMedia = <>
                 <a target='_blank' rel="noreferrer" href={media}>
-                    <img src={media} 
-                    alt="Embedded images from comment section."/>
+                    <img src={media} alt="Embedded images from comment section."/>
                 </a>
             </>
         }
@@ -48,7 +48,7 @@ function CommentBody( { data, id, media } ){
                     </button>
                 </div>)
             } else return content = <div className="pt-1 pb-1">
-                <div className="truncate overflow-auto h-20 whitespace-pre-wrap">
+                <div className="truncate h-20 whitespace-pre-wrap">
                     <ParseURL children={cleanBody}/>
                     {renderedMedia}
                 </div>
