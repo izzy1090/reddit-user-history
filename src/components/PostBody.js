@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ParseURL from "./ParseUrl";
+import UrlParser from "./UrlParser";
 import EmbeddedMedia from "./EmbeddedMedia";
 import PostImages from "./PostImages";
 
@@ -28,10 +28,9 @@ function PostBody( { data, id, media } ){
             if (isExpanded){
                 // we want to initialize any posts with the true isExpanded variable to display
                 return (content = <div className="pt-1 pb-1">
-                    
                     <div className="overflow-auto whitespace-pre-wrap ">
                         <PostImages children={cleanText}/>
-                        <ParseURL children={cleanText}/>
+                        <UrlParser children={cleanText}/>
                         <EmbeddedMedia media={media}/> 
                     </div>
                     <button onClick={()=>handleExpand(id)} 
@@ -39,22 +38,28 @@ function PostBody( { data, id, media } ){
                         Hide
                     </button>
                 </div>)
-            } else return content = <div className="pt-1 pb-1">
-                <div className="truncate overflow-hidden h-20 whitespace-pre-wrap">
-                    <PostImages children={cleanText}/>
-                    <ParseURL children={cleanText}/>
-                    <EmbeddedMedia media={media}/>
+            } else return content = <div className="relative pt-1 pb-1 h-[150px]">
+                <div className="absolute top-0 left-0 w-full h-full">
+                    <div className="truncate overflow-hidden h-full whitespace-pre-wrap">
+                        <PostImages children={cleanText}/>
+                        <UrlParser children={cleanText}/>
+                        <EmbeddedMedia media={media}/>
+                    </div>
                 </div>
-                <button onClick={()=>handleExpand(id)} 
-                    className="mt-2 text-slate-500 text-xs font-semibold hover:underline">
-                    See more...
-                </button>
+                <div className="absolute bottom-0 left-0 text-left w-full h-[5px] 
+                                pt-7 pb-4 bg-gradient-to-t from-white to-transparent">
+                    <div className="pb-[9px]"/>
+                    <button onClick={()=>handleExpand(id)} 
+                        className="text-slate-500 text-xs font-semibold hover:underline">
+                        See more...
+                    </button>
+                </div>
             </div>
         // otherwise render post normally
         } else content = <div className="pt-1 pb-1">
             <div className="whitespace-pre-wrap">
                 <PostImages children={cleanText}/>
-                <ParseURL children={cleanText}/>
+                <UrlParser children={cleanText}/>
                 <EmbeddedMedia media={media}/>
             </div>
         </div>

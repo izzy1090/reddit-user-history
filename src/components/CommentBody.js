@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ParseURL from "./ParseUrl";
+import UrlParser from "./UrlParser";
 import EmbeddedMedia from "./EmbeddedMedia";
 import PostImages from "./PostImages";
 
@@ -29,7 +29,7 @@ function CommentBody( { data, id, media } ){
                 // we want to initialize any posts with the true isExpanded variable to display
                 return (content = <div className="pt-1 pb-1">
                     <div className="overflow-auto whitespace-pre-wrap">
-                        <ParseURL children={cleanBody}/>
+                        <UrlParser children={cleanBody}/>
                         <PostImages children={cleanBody}/>
                         <EmbeddedMedia media={media}/> 
                     </div>
@@ -38,9 +38,9 @@ function CommentBody( { data, id, media } ){
                         Hide
                     </button>
                 </div>)
-            } else return content = <div className="pt-1 pb-1">
+            } else return content = <div className="pt-1">
                 <div className="truncate h-20 whitespace-pre-wrap">
-                    <ParseURL children={cleanBody}/>
+                    <UrlParser children={cleanBody}/>
                     <PostImages children={cleanBody}/>
                     <EmbeddedMedia media={media}/> 
                 </div>
@@ -52,7 +52,7 @@ function CommentBody( { data, id, media } ){
         // otherwise render post normally
         } else content = <div className="pt-1 pb-1">
             <div className="whitespace-pre-wrap">
-                <ParseURL children={cleanBody}/>
+                <UrlParser children={cleanBody}/>
                 <PostImages children={cleanBody}/>
                 <EmbeddedMedia media={media}/> 
             </div>

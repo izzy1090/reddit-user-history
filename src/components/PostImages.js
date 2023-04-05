@@ -7,7 +7,7 @@ function PostImages ( {children} ) {
             }
             return <div key={val}>
                 <a href={val} target="_blank" rel="noreferrer">
-                    <img  src={val} alt="Embedded images from text" className="m-auto p-3"/>
+                    <img  src={val} alt="Embedded images from text" className="m-auto p-2"/>
                 </a>
             </div>
         })
