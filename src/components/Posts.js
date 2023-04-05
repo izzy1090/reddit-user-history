@@ -2,6 +2,8 @@ import Dates from './Dates';
 import LoadingAnimation from './Loading';
 import Panel from './Panel';
 import PostBody from './PostBody';
+import Metrics from './Metrics';
+import upArrow from '../public/images/up-arrow.svg'
 
 function Posts({ posts }){
     if (posts.length !== 0){
@@ -31,12 +33,20 @@ function Posts({ posts }){
                         </span>
                     </div>
                 </div>
+                <div className='flex flex-row'>
+                <div className=" pr-1 pt-1">
+                    <div className="flex flex-row items-center text-xs text-slate-600">
+                        <Metrics value={post.data.ups}/>
+                        <img src={upArrow} height={15} width={15} alt="Up icon to represent upvotes"/>
+                    </div> 
+                </div>
                 <div className='mb-1 text-base font-semibold'>
                     <a target='_blank' rel='noreferrer' 
                         href={post.data.url} 
                         className='hover:underline'>
                         {post.data.title}
                     </a>
+                </div>
                 </div>
                 {post.data.link_flair_text && <div className='mb-2' style={{
                     borderRadius: '2rem',
