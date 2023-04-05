@@ -30,8 +30,8 @@ function PostBody( { data, id, media } ){
                 return (content = <div className="pt-1 pb-1">
                     
                     <div className="overflow-auto whitespace-pre-wrap ">
-                        <ParseURL children={cleanText}/>
                         <PostImages children={cleanText}/>
+                        <ParseURL children={cleanText}/>
                         <EmbeddedMedia media={media}/> 
                     </div>
                     <button onClick={()=>handleExpand(id)} 
@@ -41,8 +41,8 @@ function PostBody( { data, id, media } ){
                 </div>)
             } else return content = <div className="pt-1 pb-1">
                 <div className="truncate overflow-hidden h-20 whitespace-pre-wrap">
-                    <ParseURL children={cleanText}/> 
                     <PostImages children={cleanText}/>
+                    <ParseURL children={cleanText}/>
                     <EmbeddedMedia media={media}/>
                 </div>
                 <button onClick={()=>handleExpand(id)} 
@@ -53,8 +53,8 @@ function PostBody( { data, id, media } ){
         // otherwise render post normally
         } else content = <div className="pt-1 pb-1">
             <div className="whitespace-pre-wrap">
-                <ParseURL children={cleanText}/>
                 <PostImages children={cleanText}/>
+                <ParseURL children={cleanText}/>
                 <EmbeddedMedia media={media}/>
             </div>
         </div>

@@ -20,7 +20,7 @@ function AuthenticateUserPage ({handleAuthToken, authToken}) {
     const appDescription = <Panel className='text-normal'>
         <p className='font-bold text-center mb-1'>Welcome to the Reddit History application!</p>
         <div className='text-justify p-3'>
-            <p className='mb-2'>This app allows you to view your subscribed subreddits, posts, and comments you've posted on Reddit.</p>
+            <p className='mb-2'>This app allows you to view your subscribed subreddits as well as posts and comments you've posted on Reddit.</p>
             <p className='mb-2'>You're also able to sort your history by new or old and view data visualized to help you examine Reddit usage trends.</p>
             <p className='mb-2'>To start, click the button below to authenticate your account for usage with the application.</p>
             <p>Planned feature list and additional information regarding functionality are coming soon...</p>
