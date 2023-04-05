@@ -2,6 +2,7 @@ import { useState } from "react";
 import UrlParser from "./UrlParser";
 import EmbeddedMedia from "./EmbeddedMedia";
 import PostImages from "./PostImages";
+import GifParser from "./GifParser";
 
 function CommentBody( { data, id, media } ){
     const [ expanded, setIsExpanded ] = useState({});
@@ -9,7 +10,6 @@ function CommentBody( { data, id, media } ){
     if (data || media){
         const parser = new DOMParser();
         const cleanBody = parser.parseFromString(data, 'text/html').body.textContent.replaceAll('&#x200B;', '');
-
         let content;
         // Function passes the posts ID to the setter function
         const handleExpand = (postId) => {
@@ -54,7 +54,8 @@ function CommentBody( { data, id, media } ){
             <div className="whitespace-pre-wrap">
                 <UrlParser children={cleanBody}/>
                 <PostImages children={cleanBody}/>
-                <EmbeddedMedia media={media}/> 
+                <GifParser media={cleanBody}/> 
+                <EmbeddedMedia media={media}/>
             </div>
         </div>
         return content;

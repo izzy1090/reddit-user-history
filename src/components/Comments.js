@@ -7,6 +7,7 @@ import CommentBody from "./CommentBody";
 function Comments ({ comments }) {
     if (comments.length !== 0){
         const renderedUserComments = comments.data.children.map( (comment) => {
+            console.log('comments!', comment)
             return (
             <Panel key={comment.data.id} className='text-sm'>
                 <div className='flex flex-row border-b-2 border-slate-200 

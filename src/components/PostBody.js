@@ -38,7 +38,7 @@ function PostBody( { data, id, media } ){
                         Hide
                     </button>
                 </div>)
-            } else return content = <div className="relative pt-1 pb-1 h-[150px]">
+            } else return content = <div className="relative pt-1 pb-1 h-[130px]">
                 <div className="absolute top-0 left-0 w-full h-full">
                     <div className="truncate overflow-hidden h-full whitespace-pre-wrap">
                         <PostImages children={cleanText}/>

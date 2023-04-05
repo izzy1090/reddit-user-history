@@ -2,7 +2,10 @@ import ReactLinkify from "react-linkify";
 
 function UrlParser({children}){
     return <ReactLinkify componentDecorator={(decoratedHref, decoratedText, key) =>{
-        const regexDomain = /^(?:https?:\/\/)?(?:www\.)?([^:/\n?]+)/;
+        // write a regex command to look for any sort of embedded gif
+        const regexGif1 = /(![gif])/
+        
+        const domain = /^(?:https?:\/\/)?(?:www\.)?([^:/\n?]+)/;
         const previewReddit = /(?:https?:\/\/)?(preview.redd.it)/gi;
 
         // Grabs only the domain of the URL, rather than full URL to keep things cleaner
@@ -10,11 +13,10 @@ function UrlParser({children}){
             return null; 
         // Grabs any reddit preview URL to later remove for cleaner design
         } else {
-            
             return (<a key={key} href={decoratedHref} 
                 target="_blank" rel="noopener noreferrer"
                 className="text-user-link-color hover:underline">
-                {decoratedText.match(regexDomain)[1]}
+                {decoratedText.match(domain)[1]}
             </a> )
         }
 
