@@ -2,11 +2,8 @@ import ReactLinkify from "react-linkify";
 
 function UrlParser({children}){
     return <ReactLinkify componentDecorator={(decoratedHref, decoratedText, key) =>{
-        // write a regex command to look for any sort of embedded gif
-        const regexGif1 = /(![gif])/
-        
         const domain = /^(?:https?:\/\/)?(?:www\.)?([^:/\n?]+)/;
-        const previewReddit = /(?:https?:\/\/)?(preview.redd.it)/gi;
+        const previewReddit = /(?:https?:\/\/)?(preview.redd.it)?(i.redd.it)/gi;
 
         // Grabs only the domain of the URL, rather than full URL to keep things cleaner
         if(decoratedText.match(previewReddit)){ 

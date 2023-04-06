@@ -2,14 +2,13 @@ import { useState } from "react";
 import UrlParser from "./UrlParser";
 import EmbeddedMedia from "./EmbeddedMedia";
 import PostImages from "./PostImages";
-import GifParser from "./GifParser";
 
-function CommentBody( { data, id, media } ){
+function CommentBody( { data, id } ){
     const [ expanded, setIsExpanded ] = useState({});
     
-    if (data || media){
+    if (data){
         const parser = new DOMParser();
-        const cleanBody = parser.parseFromString(data, 'text/html').body.textContent.replaceAll('&#x200B;', '');
+        const cleanBody = parser.parseFromString(data.body, 'text/html').body.textContent.replaceAll('&#x200B;', '');
         let content;
         // Function passes the posts ID to the setter function
         const handleExpand = (postId) => {
@@ -23,7 +22,7 @@ function CommentBody( { data, id, media } ){
         // then init. the expanded variable to the expanded state with the post's ID as a key
         const isExpanded = expanded[id];
 
-        if (data.length > 500){
+        if (data.body.length > 500){
             // if isExpanded has a value
             if (isExpanded){
                 // we want to initialize any posts with the true isExpanded variable to display
@@ -31,7 +30,7 @@ function CommentBody( { data, id, media } ){
                     <div className="overflow-auto whitespace-pre-wrap">
                         <UrlParser children={cleanBody}/>
                         <PostImages children={cleanBody}/>
-                        <EmbeddedMedia media={media}/> 
+                        <EmbeddedMedia media={data.link_url}/> 
                     </div>
                     <button onClick={()=>handleExpand(id)} 
                         className="mt-1 text-slate-500 text-xs font-semibold hover:underline">
@@ -42,7 +41,7 @@ function CommentBody( { data, id, media } ){
                 <div className="truncate h-20 whitespace-pre-wrap">
                     <UrlParser children={cleanBody}/>
                     <PostImages children={cleanBody}/>
-                    <EmbeddedMedia media={media}/> 
+                    <EmbeddedMedia media={data.link_url}/> 
                 </div>
                 <button onClick={()=>handleExpand(id)} 
                     className="mt-2 text-slate-500 text-xs font-semibold hover:underline">
@@ -54,8 +53,7 @@ function CommentBody( { data, id, media } ){
             <div className="whitespace-pre-wrap">
                 <UrlParser children={cleanBody}/>
                 <PostImages children={cleanBody}/>
-                <GifParser media={cleanBody}/> 
-                <EmbeddedMedia media={media}/>
+                <EmbeddedMedia media={data.link_url}/>
             </div>
         </div>
         return content;
