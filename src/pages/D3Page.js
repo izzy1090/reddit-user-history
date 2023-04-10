@@ -28,12 +28,23 @@ function D3Test( { refreshToken } ) {
     // api request
     useEffect(()=>{
 
+        /* 
+            This is for scale and axis prep. You can do this in conjunction with D3 Dom manipulation or not. 
+            Converts your trimmed data for appropriate placement on the page later on. 
+        */
         const xScale = d3.scaleBand().domain(dummyData.map(val=>val.region)).range([0, drawWidth]).padding(.5);
         const axisBottom = d3.axisBottom(xScale);
 
         const yScale = d3.scaleLinear().domain([20, 0]).range([0, drawHeight]);
         const axisLeft = d3.axisLeft(yScale);
 
+        // -------------------------------------------------
+        // -------------------------------------------------
+        // -------------------------------------------------
+        // -------------------------------------------------
+        // -------------------------------------------------
+
+        // D3 DOM Manipulation step, this is data binding as well as the enter, update, and exit part of the D3 process
         const bar = d3.select('.test-d3-bar').selectAll('rect').data(dummyData);
 
         bar.enter().append('rect')
@@ -43,16 +54,22 @@ function D3Test( { refreshToken } ) {
             .attr('width', () => xScale.bandwidth())
             .attr('height', (data) => drawHeight - yScale(data.value))
             .attr('fill', 'black');
-
         bar.exit().remove()
         d3.select(yAxis.current).call(axisLeft)
         d3.select(xAxis.current).call(axisBottom)
+
     }, [drawHeight, drawWidth])
 
-    return <svg width={chartWidth} height={chartHeight}>
-        <g transform={`translate(${margin.left}, ${0})`} className='test-d3-bar'></g>
-        <g transform={`translate(${margin.left}, ${drawHeight})`} ref={xAxis}></g>
-        <g transform={`translate(${margin.left}, ${margin.top})`} ref={yAxis}></g>
+    // This is where we tell react to return SVGs with the binded data from above
+    // The SVG is the entire width and height of the graph
+        // The child "g" elements or "group" elements are the individual 
+    return <svg preserveAspectRatio='xMinYMin meet' viewBox={`0 0 ${chartWidth} ${chartHeight}`}>
+        {/* This is where you're binding the D3 data to the g element and rendering it via React */}
+        <g transform={`translate(${margin.left}, ${0})`} className='test-d3-bar'/>
+        {/* Similar to the above, however this is specific to the xAxis labels */}
+        <g transform={`translate(${margin.left}, ${drawHeight})`} ref={xAxis}/>
+        {/* Sam eas above, however this is specific to the yAxis labels */}
+        <g transform={`translate(${margin.left}, ${margin.top})`} ref={yAxis}/>
     </svg>
 };
 
