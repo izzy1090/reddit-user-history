@@ -60,14 +60,14 @@ function App () {
                 </div>
             </Route>
             <Route path='/d3'>
-            <RedditUserProfilePage 
+                <RedditUserProfilePage 
                     authToken={authToken} 
                     refreshToken={refreshToken} 
                     handleRefreshToken={setRefreshTokens}
                 />
                 <div className={pageContainer}>
                     <Navbar/>
-                    <D3Test/>
+                    <D3Test refreshToken={refreshToken} handleRefreshToken={setRefreshTokens}/>
                 </div>
             </Route>
         </div>

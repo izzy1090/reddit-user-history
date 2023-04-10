@@ -1,7 +1,8 @@
 function GifParser({ gif }){
     // if (gif){
+    //     console.log(gif)
     //     for (const key in gif){
-    //         const foundGif = gif[key]
+    //         const foundGif = gif[key].ext
     //         // const trimmedGifUrl = gifLocation.slice(1, gifLocation.length-1)
     //         if (foundGif){
     //             console.log(foundGif)

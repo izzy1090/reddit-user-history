@@ -32,7 +32,7 @@ function RedditUserProfilePage({ handleAuthToken, authToken, handleRefreshToken 
             }
         }
         if (authToken){
-            fetchUserInfo(authToken).then((returnedUserInfo)=>{
+            fetchUserInfo(authToken).then((returnedUserInfo)=> {
                 setLoading(false);
                 setUserProfile(returnedUserInfo);
                 handleUsername(returnedUserInfo.name)

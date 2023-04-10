@@ -2,6 +2,7 @@ import { useState } from "react";
 import UrlParser from "./UrlParser";
 import EmbeddedMedia from "./EmbeddedMedia";
 import PostImages from "./PostImages";
+import GifParser from "./GifParser";
 
 function CommentBody( { data, id } ){
     const [ expanded, setIsExpanded ] = useState({});
@@ -51,6 +52,7 @@ function CommentBody( { data, id } ){
         // otherwise render post normally
         } else content = <div className="pt-1 pb-1">
             <div className="whitespace-pre-wrap">
+                <GifParser gif={data.media_metadata}/>
                 <UrlParser children={cleanBody}/>
                 <PostImages children={cleanBody}/>
                 <EmbeddedMedia media={data.link_url}/>
