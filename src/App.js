@@ -59,7 +59,7 @@ function App () {
                     <CommentsPage refreshToken={refreshToken}/>
                 </div>
             </Route>
-            <Route path='/posthistory'>
+            <Route path='/postsgraph'>
                 <RedditUserProfilePage 
                     authToken={authToken} 
                     refreshToken={refreshToken} 

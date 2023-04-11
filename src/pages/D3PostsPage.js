@@ -1,13 +1,12 @@
-import { useEffect, useState } from "react";
-import useUsername from "../hooks/use-username";
+import { useEffect } from "react";
+import useGlobalStates from "../hooks/use-globalStates";
 import D3Posts from "../components/D3Posts";
 import fetchNewAccessToken from "../api/FetchNewAccessToken";
 import fetchPosts from "../api/FetchPosts";
 
 function D3PostsPage( { refreshToken } ){
 
-    const [ posts, setPosts ] = useState([]);
-    const { username } = useUsername();
+    const { username, posts, setPosts } = useGlobalStates();
 
     useEffect(()=>{
         const handleFetchPosts = async (token, currentUsername) => {
@@ -24,7 +23,7 @@ function D3PostsPage( { refreshToken } ){
             handleFetchPosts(refreshToken, username);
         }
         
-    },[refreshToken, username])
+    }, [refreshToken, username, setPosts]);
 
     return <D3Posts posts={posts}/>
 }

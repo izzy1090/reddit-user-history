@@ -3,12 +3,12 @@ import RedditUserProfile from "../components/RedditUserProfile";
 import fetchAccessToken from '../api/FetchAccessToken';
 import fetchUserProfile from '../api/FetchUserProfile';
 import { useEffect, useState } from "react";
-import useUsername from "../hooks/use-username";
+import useGlobalStates from "../hooks/use-globalStates";
 
 function RedditUserProfilePage({ handleAuthToken, authToken, handleRefreshToken }){
     const [ userProfile, setUserProfile ] = useState({});
     const [ isLoading, setLoading ] = useState(false);
-    const { handleUsername } = useUsername();
+    const { setUsername } = useGlobalStates();
 
     // this render the landingPage only after the user has authorized the application
     // to have access to their Reddit account
@@ -35,7 +35,7 @@ function RedditUserProfilePage({ handleAuthToken, authToken, handleRefreshToken 
             fetchUserInfo(authToken).then((returnedUserInfo)=> {
                 setLoading(false);
                 setUserProfile(returnedUserInfo);
-                handleUsername(returnedUserInfo.name)
+                setUsername(returnedUserInfo.name)
                 // stores the returned data in a variable called userProfile as a JSON
                 sessionStorage.setItem('userProfile', JSON.stringify(returnedUserInfo));
                 sessionStorage.setItem('username', JSON.stringify(returnedUserInfo.name));
@@ -51,10 +51,10 @@ function RedditUserProfilePage({ handleAuthToken, authToken, handleRefreshToken 
                 // then sets both the userData and refreshTokens to stored values from last page render
                 setUserProfile(refreshedUserData);
                 handleRefreshToken(cachedToken);
-                handleUsername(storedUsername);
+                setUsername(storedUsername);
             } 
         }
-    },[authToken, handleRefreshToken, handleAuthToken, handleUsername])
+    },[authToken, handleRefreshToken, handleAuthToken, setUsername])
 
     return <RedditUserProfile userProfile={userProfile} loading={isLoading}/>
 }

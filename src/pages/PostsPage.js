@@ -1,13 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Posts from "../components/Posts";
 import fetchNewAccessToken from "../api/FetchNewAccessToken";
 import fetchPosts from "../api/FetchPosts";
-import useUsername from "../hooks/use-username";
+import useGlobalStates from "../hooks/use-globalStates";
 
 function PostsPage({ refreshToken }){
-
-    const [ posts, setPosts ] = useState([]);
-    const { username } = useUsername();
+    const { username, posts, setPosts } = useGlobalStates();
 
     useEffect(()=>{
         const handleFetchPosts = async (token, currentUsername) => {
@@ -23,7 +21,7 @@ function PostsPage({ refreshToken }){
         if (refreshToken && username){
             handleFetchPosts(refreshToken, username);
         }
-    }, [refreshToken, username])
+    }, [refreshToken, username, setPosts])
     
     return <Posts posts={posts}/>
 };

@@ -1,12 +1,12 @@
 import fetchComments from "../api/FetchComments";
 import fetchNewAccessToken from "../api/FetchNewAccessToken";
 import Comments from "../components/Comments";
-import { useEffect, useState } from "react";
-import useUsername from "../hooks/use-username";
+import { useEffect } from "react";
+import useGlobalStates from "../hooks/use-globalStates";
 
 function CommentsPage({ refreshToken }){
-    const [ comments, setComments ] = useState([]);
-    const { username } = useUsername();
+    
+    const { username, comments, setComments } = useGlobalStates();
 
     useEffect(()=>{
         const handleFetchComments = async (token, currentUsername) => {
@@ -21,7 +21,7 @@ function CommentsPage({ refreshToken }){
         if (refreshToken && username){
             handleFetchComments(refreshToken, username);
         }
-    }, [refreshToken, username])
+    }, [refreshToken, username, setComments])
 
     return <Comments comments={comments}/>
 };
