@@ -6,7 +6,7 @@ import SubredditsPage from "./pages/SubredditsPage";
 import CommentsPage from "./pages/CommentsPage";
 import PostsPage from "./pages/PostsPage";
 import { useState } from "react";
-import D3Test from "./pages/D3Page";
+import D3PostsPage from "./pages/D3PostsPage";
 
 function App () {   
     // authentication token meant to be passed around the various components
@@ -59,7 +59,7 @@ function App () {
                     <CommentsPage refreshToken={refreshToken}/>
                 </div>
             </Route>
-            <Route path='/d3'>
+            <Route path='/posthistory'>
                 <RedditUserProfilePage 
                     authToken={authToken} 
                     refreshToken={refreshToken} 
@@ -67,7 +67,7 @@ function App () {
                 />
                 <div className={pageContainer}>
                     <Navbar/>
-                    <D3Test refreshToken={refreshToken} handleRefreshToken={setRefreshTokens}/>
+                    <D3PostsPage refreshToken={refreshToken}/>
                 </div>
             </Route>
         </div>
