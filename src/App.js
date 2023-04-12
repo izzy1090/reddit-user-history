@@ -14,7 +14,7 @@ function App () {
     const [ authToken, setAuthToken ] = useState(null); 
     const [ refreshToken, setRefreshTokens ] = useState(null);
 
-    const pageContainer = 'flex flex-col m-4'
+    const pageContainer = 'flex flex-col m-4 pl-[25%] pr-[25%]'
     console.log('App level refresh token: ', refreshToken);
     return (
     <div className="bg-slate-50">
@@ -23,14 +23,14 @@ function App () {
         </Route>
             <div className="p-5">
             <Route path='/userprofile'>
-                <RedditUserProfilePage 
-                    authToken={authToken} 
-                    refreshToken={refreshToken} 
-                    handleRefreshToken={setRefreshTokens}
-                    handleAuthToken={setAuthToken}
-                    className='flex justify-center items-center'
-                    /> 
                 <div className={pageContainer}>
+                    <RedditUserProfilePage 
+                        authToken={authToken} 
+                        refreshToken={refreshToken} 
+                        handleRefreshToken={setRefreshTokens}
+                        handleAuthToken={setAuthToken}
+                        className='flex justify-center items-center'
+                        /> 
                     <Navbar/>
                     <SubredditsPage
                         refreshToken={refreshToken} 
@@ -38,34 +38,36 @@ function App () {
                 </div>
             </Route>
             <Route path='/userprofile/posts'>
-                <RedditUserProfilePage 
-                    authToken={authToken} 
-                    refreshToken={refreshToken} 
-                    handleRefreshToken={setRefreshTokens}
-                />
                 <div className={pageContainer}>
+                    <RedditUserProfilePage 
+                        authToken={authToken} 
+                        refreshToken={refreshToken} 
+                        handleRefreshToken={setRefreshTokens}
+                    />
+                    
                     <Navbar/>
                     <PostsPage refreshToken={refreshToken}/>
                 </div>
             </Route>
             <Route path='/userprofile/comments'>
-                <RedditUserProfilePage 
-                    authToken={authToken} 
-                    refreshToken={refreshToken} 
-                    handleRefreshToken={setRefreshTokens}
-                />
                 <div className={pageContainer}>
+                    <RedditUserProfilePage 
+                        authToken={authToken} 
+                        refreshToken={refreshToken} 
+                        handleRefreshToken={setRefreshTokens}
+                    />
+                    
                     <Navbar/>
                     <CommentsPage refreshToken={refreshToken}/>
                 </div>
             </Route>
-            <Route path='/postsgraph'>
-                <RedditUserProfilePage 
-                    authToken={authToken} 
-                    refreshToken={refreshToken} 
-                    handleRefreshToken={setRefreshTokens}
-                />
+            <Route path='/postmetrics'>
                 <div className={pageContainer}>
+                    <RedditUserProfilePage 
+                        authToken={authToken} 
+                        refreshToken={refreshToken} 
+                        handleRefreshToken={setRefreshTokens}
+                    />
                     <Navbar/>
                     <D3PostsPage refreshToken={refreshToken}/>
                 </div>

@@ -3,6 +3,7 @@ import Dates from "./Dates";
 
 function RedditUserProfile( {userProfile, loading} ) {
     if (userProfile){
+        // The below is the wrapper for the user profile card
         const profileCard = <div className="flex flex-col items-center">
             <img className="w-[80px] h-[80px]" 
                 src={userProfile.snoovatar_img} 
@@ -38,11 +39,14 @@ function RedditUserProfile( {userProfile, loading} ) {
                 </div>
             </div> 
         </div>;
-        
+        // This iterates over the profile card and looks for undefined fields
+        // Essentially a way to init. a noContent variable when any of the fields are undefined
         const noContent = profileCard.props.children.filter((prop)=>{
             return prop.props.src !== undefined
         });
-
+        // this then looks at the profile card and checks to see: 
+        // if loading state is false, userProfile is defined, and the noContent array does not equal 0
+        // display the profileCard else display a Loading Animation
         const content = !loading && userProfile && noContent.length !== 0 ? profileCard : <LoadingAnimation/>;
         
         return <div className="flex items-center justify-center max-w-sm rounded overflow-hidden border-1 border-panel-border-color bg-panel-bg-color shadow-lg h-64">

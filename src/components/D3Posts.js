@@ -1,5 +1,6 @@
 import * as d3 from 'd3'; 
 import { useEffect, useRef } from 'react';
+import Panel from './Panel';
 
 const margin = {
     top: 10,
@@ -28,11 +29,17 @@ function D3Posts( { posts } ) {
     useEffect( () => {
         if (posts.length !== 0){
             // This iterates through the posts and sorts the returned posts by creation date
+            // It also returns an object of arrays so that we can accumulate Months grouped together 
             const months = d3.group(posts.data.children.sort(
                 (a, b) => { return a.data.created - b.data.created }), 
-                // It then uses 
+                // Then uses the timeFormat defined above to create dates for all the unix timestamps returned
                 val => timeFormat(new Date(val.data.created * 1000)));
             let max = 0;
+            /* 
+                Then iterate over each month and check if max is greater than each month group.
+                If it's not, then set the max to be the largest month group length. 
+                We use max to set the yScale so the bar graph has a small buffer based on the data. 
+            */
             months.forEach( month => max > month.length ? null : max = month.length )
             /* 
                 This is for scale and axis prep. You can do this in conjunction with D3 Dom manipulation or not. 
@@ -42,7 +49,11 @@ function D3Posts( { posts } ) {
             const axisBottom = d3.axisBottom(xScale);
 
             const yScale = d3.scaleLinear().domain([max + 1, 0]).range([0, drawHeight]);
-            const axisLeft = d3.axisLeft(yScale)
+            const axisLeft = d3.axisLeft(yScale).tickFormat((ticks)=> {
+                if (Number.isInteger(ticks)) {
+                    return ticks;
+                } else return null;
+            });
 
             /* 
                 This is the DOM Manipulation step and where we bind data. 
@@ -73,10 +84,12 @@ function D3Posts( { posts } ) {
         }
     }, [drawHeight, drawWidth, posts, timeFormat]);
 
-    // This is where we tell react to return SVGs with binded data from above
-    // The SVG is the entire width and height of the graph
-    // The child "g" elements or "group" elements are the individual 
-    return <>
+    /* 
+        This is where we tell react to return SVGs with binded data from above.
+        The SVG is the entire width and height of the graph.
+        The child "g" elements or "group" elements are the individual. 
+    */
+    return <Panel>
         {/* This is where we tell the SVG to scale with the view box to allow the chart to be responsive. */}
         <svg preserveAspectRatio='xMinYMin meet' viewBox={`0 0 ${chartWidth} ${chartHeight}`}>    
             {/* This is where you're binding the D3 data to the g element and rendering it via React */}
@@ -86,7 +99,10 @@ function D3Posts( { posts } ) {
             {/* Sam eas above, however this is specific to the yAxis labels */}
             <g transform={`translate(${margin.left}, ${margin.top})`} ref={yAxis}/>
         </svg>
-    </>
+        <div className='text-reddit-orange text-sm text-center underline font-semibold'>
+            Number Of Posts
+        </div>
+    </Panel>
 };
 
 export default D3Posts;

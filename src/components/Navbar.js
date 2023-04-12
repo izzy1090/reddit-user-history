@@ -5,22 +5,19 @@ function Navbar(){
         {label: 'Subreddits', path: '/userprofile'},
         {label: 'Posts', path: '/userprofile/posts'},
         {label: 'Comments', path: '/userprofile/comments'},
-        {label: 'Posts Graph', path: '/postsgraph'}
+        {label: 'Post Metrics', path: '/postmetrics'}
     ]
     const renderedLinks = links.map((component)=> {
         return <Options 
             key={component.label}
             to={component.path}
             className='mr-5'
-            activeClassName='font-bold 
-            text-reddit-text-orange 
-            border-b-2 
-            border-reddit-border-orange'
-            >
+            activeClassName='font-bold text-reddit-text-orange 
+            border-b-2 border-reddit-border-orange'>
                 {component.label}    
         </Options>;
     });
-    return <div className="overflow-y-scroll flex flex-row items-start">
+    return <div className="overflow-y-scroll flex flex-row items-start pt-2 pb-2">
         {renderedLinks}
     </div>
 };

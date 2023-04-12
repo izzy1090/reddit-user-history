@@ -23,7 +23,7 @@ function PostBody( { data, id } ){
         // then init. the expanded variable to the expanded state with the post's ID as a key
         const isExpanded = expanded[id];
 
-        if (data.length > 500){
+        if (data.selftext.length > 500){
             // if isExpanded has a value
             if (isExpanded){
                 // we want to initialize any posts with the true isExpanded variable to display
