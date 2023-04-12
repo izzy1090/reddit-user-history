@@ -3,12 +3,12 @@ import UrlParser from "./UrlParser";
 import EmbeddedMedia from "./EmbeddedMedia";
 import PostImages from "./PostImages";
 
-function PostBody( { data, id, media } ){
+function PostBody( { data, id } ){
     const [ expanded, setIsExpanded ] = useState({});
     
-    if (data || media){
+    if (data){
         const parser = new DOMParser();
-        const cleanText = parser.parseFromString(data, 'text/html').body.textContent.replaceAll('&#x200B;', '');
+        const cleanText = parser.parseFromString(data.selftext, 'text/html').body.textContent.replaceAll('&#x200B;', '');
         
         let content;
         // Function passes the posts ID to the setter function
@@ -31,7 +31,7 @@ function PostBody( { data, id, media } ){
                     <div className="overflow-auto whitespace-pre-wrap ">
                         <PostImages children={cleanText}/>
                         <UrlParser children={cleanText}/>
-                        <EmbeddedMedia media={media}/> 
+                        <EmbeddedMedia media={data.url}/> 
                     </div>
                     <button onClick={()=>handleExpand(id)} 
                         className="mt-1 text-slate-500 text-xs font-semibold hover:underline">
@@ -43,7 +43,7 @@ function PostBody( { data, id, media } ){
                     <div className="truncate overflow-hidden h-full whitespace-pre-wrap">
                         <PostImages children={cleanText}/>
                         <UrlParser children={cleanText}/>
-                        <EmbeddedMedia media={media}/>
+                        <EmbeddedMedia media={data.url}/>
                     </div>
                 </div>
                 <div className="absolute bottom-0 left-0 text-left w-full h-[5px] 
@@ -60,7 +60,7 @@ function PostBody( { data, id, media } ){
             <div className="whitespace-pre-wrap">
                 <PostImages children={cleanText}/>
                 <UrlParser children={cleanText}/>
-                <EmbeddedMedia media={media}/>
+                <EmbeddedMedia media={data.url}/>
             </div>
         </div>
         return content;

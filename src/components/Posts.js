@@ -7,7 +7,7 @@ import upArrow from '../public/images/up-arrow.svg'
 
 function Posts({ posts }){
     if (posts.length !== 0){
-        console.log('returned posts: ', posts)
+        // console.log('returned posts: ', posts)
         const renderedPosts = posts.data.children.map( (post) => {
             return (
             <Panel key={post.data.id} className='text-sm'> 
@@ -55,7 +55,7 @@ function Posts({ posts }){
                     display:'inline-block', 
                     backgroundColor: post.data.link_flair_background_color || 'orange',}}>
                 {post.data.link_flair_text} </div>}
-                <PostBody data={post.data.selftext} id={post.data.id} media={post.data.url}/>
+                <PostBody data={post.data} id={post.data.id}/>
             </Panel>
         )})
         
