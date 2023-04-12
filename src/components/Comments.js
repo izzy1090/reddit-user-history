@@ -13,10 +13,6 @@ function Comments ({ comments }) {
                     The . matches any character except for a newline, and the * means "zero or more times".
                 $: matches the end of the string. 
             */
-            const regexGif = /!\[gif\](.*)$/
-            if (regexGif){
-                comment.data.body = comment.data.body.replace(regexGif, '')
-            }
             return (
             <Panel key={comment.data.id} className='text-sm'>
                 <div className='flex flex-row border-b-2 border-slate-200 
@@ -44,7 +40,6 @@ function Comments ({ comments }) {
                     <div className="border-dashed border-r-2 border-slate-200 ml-2 mr-3"/>
                     <div className="p-2 bg-comment-body-color rounded-md w-full h-full overflow-auto">
                         <CommentBody id={comment.data.id} data={comment.data}/>
-                        
                     </div>
                     
                 </div>

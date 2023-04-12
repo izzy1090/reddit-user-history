@@ -7,7 +7,7 @@ import upArrow from '../public/images/up-arrow.svg'
 
 function Posts({ posts }){
     if (posts.length !== 0){
-        // console.log('returned posts: ', posts)
+        console.log('returned posts: ', posts)
         const renderedPosts = posts.data.children.map( (post) => {
             return (
             <Panel key={post.data.id} className='text-sm'> 

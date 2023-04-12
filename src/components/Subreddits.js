@@ -13,7 +13,7 @@ function Subreddits({ subreddits }){
                 subreddit.data.icon_img = RedditLogo;
             }
             if (subreddit.data){
-                console.log(subreddit.data.public_description)
+                console.log(subreddit.data);
                 const parser = new DOMParser();
                 const cleanPublicDescription = parser.parseFromString(subreddit.data.public_description, 'text/html').body.textContent;
                 return (

@@ -1,6 +1,10 @@
 import ReactLinkify from "react-linkify";
 
 function UrlParser({children}){
+    // Tip (.*) means anything in b/t - i.e. from ] to )
+    const regexGif = /!\[gif\](.*)\)/;
+    children = children.replace(regexGif, '');
+    
     return <ReactLinkify componentDecorator={(decoratedHref, decoratedText, key) =>{
         const domain = /^(?:https?:\/\/)?(?:www\.)?([^:/\n?]+)/;
         const previewReddit = decoratedText.match(/(?:https?:\/\/)?(preview.redd.it)/gi);

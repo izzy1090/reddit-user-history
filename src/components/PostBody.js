@@ -2,6 +2,7 @@ import { useState } from "react";
 import UrlParser from "./UrlParser";
 import EmbeddedMedia from "./EmbeddedMedia";
 import PostImages from "./PostImages";
+import GifParser from "./GifParser";
 
 function PostBody( { data, id } ){
     const [ expanded, setIsExpanded ] = useState({});
@@ -22,13 +23,13 @@ function PostBody( { data, id } ){
         }
         // then init. the expanded variable to the expanded state with the post's ID as a key
         const isExpanded = expanded[id];
-
         if (data.selftext.length > 500){
             // if isExpanded has a value
             if (isExpanded){
                 // we want to initialize any posts with the true isExpanded variable to display
                 return (content = <div className="pt-1 pb-1">
                     <div className="overflow-auto whitespace-pre-wrap ">
+                        <GifParser gif={data.media_metadata}/>
                         <PostImages children={cleanText}/>
                         <UrlParser children={cleanText}/>
                         <EmbeddedMedia media={data.url}/> 
@@ -41,6 +42,7 @@ function PostBody( { data, id } ){
             } else return content = <div className="relative pt-1 pb-1 h-[130px]">
                 <div className="absolute top-0 left-0 w-full h-full">
                     <div className="truncate overflow-hidden h-full whitespace-pre-wrap">
+                        <GifParser gif={data.media_metadata}/>
                         <PostImages children={cleanText}/>
                         <UrlParser children={cleanText}/>
                         <EmbeddedMedia media={data.url}/>
@@ -58,6 +60,7 @@ function PostBody( { data, id } ){
         // otherwise render post normally
         } else content = <div className="pt-1 pb-1">
             <div className="whitespace-pre-wrap">
+                <GifParser gif={data.media_metadata}/>
                 <PostImages children={cleanText}/>
                 <UrlParser children={cleanText}/>
                 <EmbeddedMedia media={data.url}/>

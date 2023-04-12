@@ -29,6 +29,7 @@ function CommentBody( { data, id } ){
                 // we want to initialize any posts with the true isExpanded variable to display
                 return (content = <div className="pt-1 pb-1">
                     <div className="overflow-auto whitespace-pre-wrap">
+                        <GifParser gif={data.media_metadata}/>
                         <UrlParser children={cleanBody}/>
                         <PostImages children={cleanBody}/>
                         <EmbeddedMedia media={data.link_url}/> 
@@ -40,6 +41,7 @@ function CommentBody( { data, id } ){
                 </div>)
             } else return content = <div className="pt-1">
                 <div className="truncate h-20 whitespace-pre-wrap">
+                    <GifParser gif={data.media_metadata} gifDebug={data}/>
                     <UrlParser children={cleanBody}/>
                     <PostImages children={cleanBody}/>
                     <EmbeddedMedia media={data.link_url}/> 
