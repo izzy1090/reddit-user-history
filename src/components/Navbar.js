@@ -11,7 +11,7 @@ function Navbar(){
         return <Options 
             key={component.label}
             to={component.path}
-            className='mr-5'
+            className='mr-5 sm:text-[.8rem]'
             activeClassName='font-bold text-reddit-text-orange 
             border-b-2 border-reddit-border-orange'>
                 {component.label}    

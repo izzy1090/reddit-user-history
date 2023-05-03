@@ -3,7 +3,13 @@ module.exports = {
   content: ["./src/**/*.{html,js}"],
   theme: {
     screens: {
-      'xs': {'max':'375px'}
+      'xs': {'max':'375px'},
+      'sm': {'max': '480px'},
+      'md': {'max': '768px'},
+      'lg': {'max': '1024px'},
+      'xlg': {'max': '1280px'},
+      '2k': {'max': '1440px'},
+      '4k': {'max': '1920px'}
     }, 
     borderWidth:{
       DEFAULT: '0px',

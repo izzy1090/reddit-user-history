@@ -14,16 +14,18 @@ function App () {
     const [ authToken, setAuthToken ] = useState(null); 
     const [ refreshToken, setRefreshTokens ] = useState(null);
 
-    const pageContainer = 'flex flex-col m-4 pl-[25%] pr-[25%] xs:p-0 m-0'
+    const pageContainer = 'flex flex-col m-4 pl-[25%] pr-[25%]'
+    const responsiveClasses = 
+        'xs:p-0 xs:m-0 sm:p-0 md:p-0 lg:pl-[10%] lg:pr-[4%] lg:pl-[4%]'
     console.log('App level refresh token: ', refreshToken);
     return (
     <div className="bg-slate-50">
         <Route path="/">
             <AuthenticateUserPage handleAuthToken={setAuthToken}/>
         </Route>
-            <div className="p-5">
+            <div className={`p-5 ${responsiveClasses}`}>
             <Route path='/userprofile'>
-                <div className={pageContainer}>
+                <div className={`${pageContainer} ${responsiveClasses}`}>
                     <RedditUserProfilePage 
                         authToken={authToken} 
                         refreshToken={refreshToken} 
@@ -38,7 +40,7 @@ function App () {
                 </div>
             </Route>
             <Route path='/userprofile/posts'>
-                <div className={pageContainer}>
+                <div className={`${pageContainer} ${responsiveClasses}`}>
                     <RedditUserProfilePage 
                         authToken={authToken} 
                         refreshToken={refreshToken} 
@@ -50,7 +52,7 @@ function App () {
                 </div>
             </Route>
             <Route path='/userprofile/comments'>
-                <div className={pageContainer}>
+                <div className={`${pageContainer} ${responsiveClasses}`}>
                     <RedditUserProfilePage 
                         authToken={authToken} 
                         refreshToken={refreshToken} 
@@ -62,7 +64,7 @@ function App () {
                 </div>
             </Route>
             <Route path='/postmetrics'>
-                <div className={pageContainer}>
+                <div className={`${pageContainer} ${responsiveClasses}`}>
                     <RedditUserProfilePage 
                         authToken={authToken} 
                         refreshToken={refreshToken} 

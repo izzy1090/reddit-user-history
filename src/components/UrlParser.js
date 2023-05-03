@@ -21,7 +21,7 @@ function UrlParser({children}){
         // } 
         else {
             return (<a key={key} href={decoratedHref} 
-                target="_blank" rel="noopener noreferrer"
+                target="_blank" rel="noreferrer"
                 className="text-user-link-color hover:underline">
                 {decoratedText.match(domain)[1]}
             </a> )
