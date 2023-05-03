@@ -1,6 +1,6 @@
 function GifParser({ gif }){
     if (gif){
-        console.log('found in posts: ',gif)
+        console.log('found in posts: ', gif)
         // Iterate over the gif object to access all the available key/value pairs
         for (const key in gif){
             const foundGif = gif[key].id;

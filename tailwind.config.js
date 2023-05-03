@@ -2,6 +2,9 @@
 module.exports = {
   content: ["./src/**/*.{html,js}"],
   theme: {
+    screens: {
+      'xs': {'max':'375px'}
+    }, 
     borderWidth:{
       DEFAULT: '0px',
       '1': '1px',

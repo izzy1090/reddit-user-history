@@ -14,7 +14,7 @@ function App () {
     const [ authToken, setAuthToken ] = useState(null); 
     const [ refreshToken, setRefreshTokens ] = useState(null);
 
-    const pageContainer = 'flex flex-col m-4 pl-[25%] pr-[25%]'
+    const pageContainer = 'flex flex-col m-4 pl-[25%] pr-[25%] xs:p-0 m-0'
     console.log('App level refresh token: ', refreshToken);
     return (
     <div className="bg-slate-50">

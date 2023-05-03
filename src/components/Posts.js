@@ -11,16 +11,17 @@ function Posts({ posts }){
         const renderedPosts = posts.data.children.map( (post) => {
             return (
             <Panel key={post.data.id} className='text-sm'> 
-                <div className="flex flex-row items-center mb-1 text-xs">
+                <div className="flex flex-row items-center mb-1 text-xs xs:flex-col">
                     <a target='_blank' rel="noreferrer" 
                         href={`https://www.reddit.com/${post.data.subreddit_name_prefixed}`} 
                         className='font-semibold hover:underline'>
                             {post.data.subreddit_name_prefixed}
                     </a>
-                    <div className='ml-1 flex flex-row text-slate-500'>
+                    
+                    <div className='ml-1 flex flex-row text-slate-500 xs:flex-col'>
                         <a target='_blank' rel='noreferrer' 
                             href={`https://www.reddit.com/user/${post.data.author}/`}>
-                            · post by 
+                            · post by
                             <span className='ml-1 hover:underline'>
                                 u/{post.data.author}
                             </span>
@@ -32,6 +33,7 @@ function Posts({ posts }){
                             · edited <Dates date={post.data.edited} classNames='ml-1'/>
                         </span>
                     </div>
+                    
                 </div>
                 <div className='flex flex-row'>
                 <div className=" pr-1 pt-1">
