@@ -8,20 +8,20 @@ import upArrow from '../public/images/up-arrow.svg'
 function Posts({ posts }){
     if (posts.length !== 0){
         console.log('returned posts: ', posts)
+        const responsiveParentClasses = 'xs:flex xs:flex-col xs:flex-start'
         const renderedPosts = posts.data.children.map( (post) => {
             return (
             <Panel key={post.data.id} className='text-sm'> 
-                <div className="flex flex-row items-center mb-1 text-xs xs:flex-col">
+                <div className={`flex flex-row mb-1 text-xs ${responsiveParentClasses}`}>
                     <a target='_blank' rel="noreferrer" 
                         href={`https://www.reddit.com/${post.data.subreddit_name_prefixed}`} 
                         className='font-semibold hover:underline'>
                             {post.data.subreddit_name_prefixed}
                     </a>
-                    
-                    <div className='ml-1 flex flex-row text-slate-500 xs:flex-col'>
+                    <div className='ml-1 flex flex-row text-slate-500 xs:m-0'>
                         <a target='_blank' rel='noreferrer' 
                             href={`https://www.reddit.com/user/${post.data.author}/`}>
-                            · post by
+                            <span className='xs:hidden'>·</span> post by
                             <span className='ml-1 hover:underline'>
                                 u/{post.data.author}
                             </span>
@@ -29,7 +29,7 @@ function Posts({ posts }){
                         <span className='flex flex-row ml-1'>
                             on <Dates date={post.data.created} classNames='ml-1'/>
                         </span>
-                        <span className='flex flex-row ml-1'> 
+                        <span className='flex flex-row ml-1 xs:hidden'> 
                             · edited <Dates date={post.data.edited} classNames='ml-1'/>
                         </span>
                     </div>
@@ -42,7 +42,7 @@ function Posts({ posts }){
                         <img src={upArrow} height={15} width={15} alt="Up icon to represent upvotes"/>
                     </div> 
                 </div>
-                <div className='mb-1 text-base font-semibold'>
+                <div className='mb-1 text-base font-semibold ml-1'>
                     <a target='_blank' rel='noreferrer' 
                         href={post.data.url} 
                         className='hover:underline'>

@@ -4,7 +4,7 @@ function EmbeddedMedia({media}){
     if (checkJpgPng){
         renderedMedia = <>
             <a target='_blank' rel="noreferrer" href={media}>
-                <img src={media} className="m-auto" alt="Embedded images from comment section."/>
+                <img src={media} className="m-auto" width={300} alt="Embedded images from comment section."/>
             </a>
         </>
     } return renderedMedia;
