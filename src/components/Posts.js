@@ -8,7 +8,7 @@ import upArrow from '../public/images/up-arrow.svg'
 function Posts({ posts }){
     if (posts.length !== 0){
         console.log('returned posts: ', posts)
-        const responsiveParentClasses = 'xs:flex xs:flex-col xs:flex-start'
+        const responsiveParentClasses = 'xs:flex-col xs:flex-start md:flex-col xs:flex-start'
         const renderedPosts = posts.data.children.map( (post) => {
             return (
             <Panel key={post.data.id} className='text-sm'> 
@@ -18,19 +18,19 @@ function Posts({ posts }){
                         className='font-semibold hover:underline'>
                             {post.data.subreddit_name_prefixed}
                     </a>
-                    <div className='ml-1 flex flex-row text-slate-500 xs:m-0'>
+                    <div className='ml-1 flex flex-row text-slate-500 xs:m-0 xs:flex-col md:m-0 md:flex-col'>
                         <a target='_blank' rel='noreferrer' 
                             href={`https://www.reddit.com/user/${post.data.author}/`}>
-                            <span className='xs:hidden'>·</span> post by
+                            <span className='xs:hidden md:hidden'>·</span> post by
                             <span className='ml-1 hover:underline'>
                                 u/{post.data.author}
                             </span>
                         </a>
-                        <span className='flex flex-row ml-1'>
-                            on <Dates date={post.data.created} classNames='ml-1'/>
+                        <span className='flex flex-row ml-1 xs:m-0 md:m-0'>
+                            <span className='xs:hidden md:hidden'>on</span> <Dates date={post.data.created} classNames='ml-1 xs:m-0 md:m-0'/>
                         </span>
-                        <span className='flex flex-row ml-1 xs:hidden'> 
-                            · edited <Dates date={post.data.edited} classNames='ml-1'/>
+                        <span className='flex flex-row ml-1 xs:m-0 md:m-0'> 
+                            <span className='xs:hidden md:hidden'>·</span> edited <Dates date={post.data.edited} classNames='ml-1'/>
                         </span>
                     </div>
                     
