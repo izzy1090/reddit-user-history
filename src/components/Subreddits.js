@@ -26,16 +26,18 @@ function Subreddits({ subreddits }){
                                 alt='Icon used for each subreddit' 
                                 className="w-[20px] h-[20px] rounded-full"/>
                         </a>
-                        <div className="pl-2 font-semibold hover:underline">
-                            <a target="_blank" 
-                                rel='noreferrer' 
-                                href={`https://www.reddit.com${subreddit.data.url}`}>
-                                {subreddit.data.display_name_prefixed}
-                            </a>
-                        </div>
-                        <div className="flex flex-row pl-1 text-slate-500">
-                            · created 
-                            <Dates date={subreddit.data.created} classNames='ml-1'/>
+                        <div className="flex flex-row xs:flex-col">
+                            <div className="pl-2 font-semibold hover:underline">
+                                <a target="_blank" 
+                                    rel='noreferrer' 
+                                    href={`https://www.reddit.com${subreddit.data.url}`}>
+                                    {subreddit.data.display_name_prefixed}
+                                </a>
+                            </div>
+                            <div className="flex flex-row pl-1 text-slate-500 xs:ml-1">
+                                <span className="mr-1 xs:hidden">·</span> created 
+                                <Dates date={subreddit.data.created} classNames='ml-1'/>
+                            </div>
                         </div>
                     </div>
                     <div className='mb-1 text-sm'>

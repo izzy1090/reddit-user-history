@@ -8,7 +8,7 @@ import upArrow from '../public/images/up-arrow.svg'
 function Posts({ posts }){
     if (posts.length !== 0){
         console.log('returned posts: ', posts)
-        const responsiveParentClasses = 'xs:flex-col xs:flex-start md:flex-col xs:flex-start'
+        const responsiveParentClasses = 'flex xs:flex-col xs:flex-start md:flex-col xs:flex-start'
         const renderedPosts = posts.data.children.map( (post) => {
             return (
             <Panel key={post.data.id} className='text-sm'> 
@@ -30,7 +30,7 @@ function Posts({ posts }){
                             <span className='xs:hidden md:hidden'>on</span> <Dates date={post.data.created} classNames='ml-1 xs:m-0 md:m-0'/>
                         </span>
                         <span className='flex flex-row ml-1 xs:m-0 md:m-0'> 
-                            <span className='xs:hidden md:hidden'>·</span> edited <Dates date={post.data.edited} classNames='ml-1'/>
+                            <span className='mr-1 xs:hidden md:hidden'>·</span> edited <Dates date={post.data.edited} classNames='ml-1'/>
                         </span>
                     </div>
                     
