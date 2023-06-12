@@ -47,14 +47,19 @@ function D3Posts( { posts } ) {
             */
             const xScale = d3.scaleBand().domain(months.keys()).range([0, drawWidth]).padding(.5);
             const axisBottom = d3.axisBottom(xScale);
-
+            
             const yScale = d3.scaleLinear().domain([max + 1, 0]).range([0, drawHeight]);
             const axisLeft = d3.axisLeft(yScale).tickFormat((ticks)=> {
                 if (Number.isInteger(ticks)) {
                     return ticks;
                 } else return null;
-            });
+            }); 
 
+            // this line of code selects the ref stored at the yAxis/xAxis variable
+            // it then calls the current data stored in the axisLeft/axisBottom variable and then styles it before 
+            // it's bound to the bar graph below
+            d3.select(yAxis.current).call(axisLeft).selectAll('.tick text').style('font-size', '1.5rem')
+            d3.select(xAxis.current).call(axisBottom).selectAll('.tick text').style('font-size', '1.5rem')
             /* 
                 This is the DOM Manipulation step and where we bind data. 
                 We're also proceeding through the enter, update, and exit part of the D3 process 

@@ -5,7 +5,7 @@ function Navbar(){
         {label: 'Subreddits', path: '/userprofile'},
         {label: 'Posts', path: '/userprofile/posts'},
         {label: 'Comments', path: '/userprofile/comments'},
-        {label: 'Post Metrics', path: '/postmetrics'}
+        {label: 'Metrics', path: '/metrics'}
     ]
     const renderedLinks = links.map((component)=> {
         return <Options 

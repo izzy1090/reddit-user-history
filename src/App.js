@@ -63,7 +63,7 @@ function App () {
                     <CommentsPage refreshToken={refreshToken}/>
                 </div>
             </Route>
-            <Route path='/postmetrics'>
+            <Route path='/metrics'>
                 <div className={`${pageContainer} ${responsiveClasses}`}>
                     <RedditUserProfilePage 
                         authToken={authToken} 

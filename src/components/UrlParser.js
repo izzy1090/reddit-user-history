@@ -7,7 +7,7 @@ function UrlParser({children}){
     
     return <ReactLinkify componentDecorator={(decoratedHref, decoratedText, key) =>{
         const domain = /^(?:https?:\/\/)?(?:www\.)?([^:/\n?]+)/;
-        const previewReddit = decoratedText.match(/(?:https?:\/\/)?(preview.redd.it)/gi);
+        const previewReddit = decoratedText.match(/(?:https?:\/\/)?(preview.redd.it)+/gi);
         const iReddit = decoratedHref.match(/(?:https?:\/\/)?(i.redd.it)/gi);
         // const giphy = decoratedText.match(/(?:http?:\/\/)?(giphy.com)/)
         
