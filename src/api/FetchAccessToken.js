@@ -1,6 +1,4 @@
-import nextConfig from "../../next.config";
-
-const { REACT_APP_CLIENT_ID, REACT_APP_CLIENT_SECRET, REACT_APP_REDIRECT_URI } = nextConfig;
+const { REACT_APP_CLIENT_ID, REACT_APP_CLIENT_SECRET, REACT_APP_REDIRECT_URI } = process.env;
 
 const tokenUrl = 'https://www.reddit.com/api/v1/access_token';
 

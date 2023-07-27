@@ -4,6 +4,7 @@ import RedditLogo from '../public/images/reddit_logo.png';
 import Dates from "./Dates";
 import Metrics from "./Metrics";
 import SubscribersIcon from '../public/images/subs-icon.svg'
+import UrlParser from "./UrlParser";
 
 function Subreddits({ subreddits }){
     
@@ -41,7 +42,7 @@ function Subreddits({ subreddits }){
                         </div>
                     </div>
                     <div className='mb-1 text-sm'>
-                        {cleanPublicDescription}
+                        <UrlParser children={cleanPublicDescription}></UrlParser>
                     </div>
                     <div className="flex flex-row text-xs items-center">
                         <Metrics value={subreddit.data.subscribers}/>
