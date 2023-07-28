@@ -21,11 +21,13 @@ function App () {
     return (
     <div className="bg-slate-50">
         <Route path="/">
-            <AuthenticateUserPage handleAuthToken={setAuthToken}/>
+            <div className={`${pageContainer} ${responsiveClasses}`}>
+                <AuthenticateUserPage handleAuthToken={setAuthToken} />
+            </div>
         </Route>
             <div className={`p-5 ${responsiveClasses}`}>
-            <Route path='/userprofile'>
-                <div className={`${pageContainer} ${responsiveClasses}`}>
+            <div className={`${pageContainer} ${responsiveClasses}`}>
+                <Route path='/userprofile'>
                     <RedditUserProfilePage 
                         authToken={authToken} 
                         refreshToken={refreshToken} 
@@ -37,8 +39,8 @@ function App () {
                     <SubredditsPage
                         refreshToken={refreshToken} 
                         handleRefreshToken={setRefreshTokens}/>
-                </div>
-            </Route>
+                </Route>
+            </div>
             <Route path='/userprofile/posts'>
                 <div className={`${pageContainer} ${responsiveClasses}`}>
                     <RedditUserProfilePage 

@@ -1,17 +1,15 @@
 import AuthenticateUser from '../components/AuthenticateUser';
 import Panel from '../components/Panel';
 
-function AuthenticateUserPage ({handleAuthToken, authToken}) {  
+function AuthenticateUserPage ({handleAuthToken, authToken, pageContainer}) {  
     // params necessary for the authentication URL below
-    const REDDIT_SCOPE = ['privatemessages',
+    const REDDIT_SCOPE = [
         'identity', 
         'edit', 
         'flair', 
         'history', 
         'read', 
         'vote', 
-        'wikiread', 
-        'wikiedit', 
         'mysubreddits'];
 
     const {REACT_APP_CLIENT_ID, REACT_APP_RANDOM_STRING, REACT_APP_REDIRECT_URI} = process.env;
@@ -19,7 +17,7 @@ function AuthenticateUserPage ({handleAuthToken, authToken}) {
 
     const appDescription = <Panel className='text-normal'>
         <p className='font-bold text-center mb-1'>Welcome!</p>
-        <div className='text-justify p-3'>
+        <div className='text-justify-left p-3'>
             <p className='mb-2'>After granting access, you're able to view all of your subscribed subreddits, posts and past comments. I designed this to be a streamlined version of reddit without all the ads!</p>
             <p className='mb-2'>Currently there is a means of visualizing your data, however that's a work in progress.</p>
             <p className='mb-2'>Planned features:</p>
