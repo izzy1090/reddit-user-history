@@ -18,12 +18,19 @@ function AuthenticateUserPage ({handleAuthToken, authToken}) {
     const authorizationURL = `https://www.reddit.com/api/v1/authorize?client_id=${REACT_APP_CLIENT_ID}&response_type=code&state=${REACT_APP_RANDOM_STRING}&redirect_uri=${REACT_APP_REDIRECT_URI}&duration=permanent&scope=${REDDIT_SCOPE}`
 
     const appDescription = <Panel className='text-normal'>
-        <p className='font-bold text-center mb-1'>Welcome to the Reddit History application!</p>
+        <p className='font-bold text-center mb-1'>Welcome!</p>
         <div className='text-justify p-3'>
-            <p className='mb-2'>This app allows you to view your subscribed subreddits as well as posts and comments you've posted on Reddit.</p>
-            <p className='mb-2'>You're also able to sort your history by new or old and view data visualized to help you examine Reddit usage trends.</p>
-            <p className='mb-2'>To start, click the button below to authenticate your account for usage with the application.</p>
-            <p>Planned feature list and additional information regarding functionality are coming soon...</p>
+            <p className='mb-2'>After granting access, you're able to view all of your subscribed subreddits, posts and past comments. I designed this to be a streamlined version of reddit without all the ads!</p>
+            <p className='mb-2'>Currently there is a means of visualizing your data, however that's a work in progress.</p>
+            <p className='mb-2'>Planned features:</p>
+            <ul style={{listStyleType: 'disc', paddingLeft: '1.5em'}}>
+                <li>See past subreddits you've liked</li>
+                <li>Like threads, posts, or comments on Reddit directly from the app</li>
+                <li>Add additional metrics visualizations (i.e. comments, likes, etc.)</li>
+                <li>Sort results for each category by new or old displaying first</li>
+                <li>Lazy loading for each tab</li>
+            </ul>
+            
         </div>
     </Panel>
     
