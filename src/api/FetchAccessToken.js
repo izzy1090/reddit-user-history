@@ -8,8 +8,7 @@ const fetchAccessToken = async (authorization_code) => {
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
             'Authorization': 'Basic ' + btoa(`${REACT_APP_CLIENT_ID}:${REACT_APP_CLIENT_SECRET}`).toString('base64')},
-            body: `grant_type=authorization_code&code=${authorization_code}&redirect_uri=${REACT_APP_REDIRECT_URI}`,
-            // 'User-Agent': 'Reddit-User-History/1.0 (React; Web; michaelisabella1@gmail.com)'
+            body: `grant_type=authorization_code&code=${authorization_code}&redirect_uri=${REACT_APP_REDIRECT_URI}`
     })
     const accessToken = await response.json();
     return accessToken;

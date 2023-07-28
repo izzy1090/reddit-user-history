@@ -3,9 +3,7 @@ const fetchUserProfile = async (authorize_token) => {
         method: 'GET',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
-            'Authorization': `Bearer ${authorize_token}`,
-            // 'User-Agent': 'fetch-user-history/1.0.0',
-        },
+            'Authorization': `Bearer ${authorize_token}`        },
     })
     if (!request.ok){
         throw new Error(`Failed to fetch user profile: ${request.status} ${request.statusText}`)

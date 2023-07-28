@@ -3,9 +3,7 @@ const fetchSubreddits = async (newToken)=> {
         method: 'GET',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
-            'Authorization': `Bearer ${newToken}`,
-            // 'User-Agent': 'fetch-user-history/1.0.0'
-        }
+            'Authorization': `Bearer ${newToken}`        }
     });
     const response = await request.json()
     return response;
