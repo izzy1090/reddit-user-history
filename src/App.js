@@ -63,7 +63,7 @@ function App () {
                     <CommentsPage refreshToken={refreshToken}/>
                 </div>
             </Route>
-            <Route path='/metrics'>
+            {/* <Route path='/metrics'>
                 <div className={`${pageContainer} ${responsiveClasses}`}>
                     <RedditUserProfilePage 
                         authToken={authToken} 
@@ -73,7 +73,7 @@ function App () {
                     <Navbar/>
                     <D3PostsPage refreshToken={refreshToken}/>
                 </div>
-            </Route>
+            </Route> */}
         </div>
     </div>
     )
