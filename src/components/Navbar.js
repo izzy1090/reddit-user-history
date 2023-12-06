@@ -4,8 +4,8 @@ function Navbar(){
     const links = [
         {label: 'Subreddits', path: '/userprofile'},
         {label: 'Posts', path: '/userprofile/posts'},
-        {label: 'Comments', path: '/userprofile/comments'},
-        {label: 'Metrics', path: '/metrics'}
+        {label: 'Comments', path: '/userprofile/comments'}
+        // {label: 'Metrics', path: '/metrics'}
     ]
     const renderedLinks = links.map((component)=> {
         return <Options 
