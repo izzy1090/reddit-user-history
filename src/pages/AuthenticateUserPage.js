@@ -19,7 +19,6 @@ function AuthenticateUserPage ({handleAuthToken, authToken, pageContainer}) {
         <p className='font-bold text-center mb-1'>Welcome!</p>
         <div className='text-justify-left p-3'>
             <p className='mb-2'>After granting access, you're able to view all of your subscribed subreddits, posts and past comments. I designed this to be a streamlined version of reddit without all the ads!</p>
-            <p className='mb-2'>Currently there is a means of visualizing your data, however that's a work in progress.</p>
             <p className='mb-2'>Planned features:</p>
             <ul style={{listStyleType: 'disc', paddingLeft: '1.5em'}}>
                 <li>See past subreddits you've liked</li>
@@ -27,6 +26,7 @@ function AuthenticateUserPage ({handleAuthToken, authToken, pageContainer}) {
                 <li>Add additional metrics visualizations (i.e. comments, likes, etc.)</li>
                 <li>Sort results for each category by new or old displaying first</li>
                 <li>Lazy loading for each tab</li>
+                <li>Reintegrate D3 component and ensure styling works as intended</li>
             </ul>
             
         </div>
